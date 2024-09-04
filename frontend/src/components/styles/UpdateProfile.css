@@ -1,0 +1,59 @@
+.update-profile-container {
+    background: url('../assets/fantasy-style-scene-with-mountains-landscape.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 50px;
+    max-width: 900px;
+    margin: auto;
+    /* background-color: #f9f9f9; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .profile-title-update {
+    text-align: center;
+    color: orange;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .profile-card-update {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .profile-info-update {
+    flex: 1;
+  }
+  
+  .profile-info-update p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .profile-info-update p strong {
+    color: #333;
+  }
+  
+  .profile-info-update p:not(:last-child) {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .profile-card-update {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

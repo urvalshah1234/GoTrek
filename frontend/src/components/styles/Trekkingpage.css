@@ -1,0 +1,5 @@
+.bg-trek-div
+{
+    background: url('../assets/trekking_img1.jpg') no-repeat center center fixed;;
+    background-size: cover;    
+}

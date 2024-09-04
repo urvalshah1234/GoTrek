@@ -1,0 +1,25 @@
+.address-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .address-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .address-content {
+    text-align: center;
+    display: flex;
+    flex: 1;
+    gap: 20px;
+  }
+  
+  .address-info {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }

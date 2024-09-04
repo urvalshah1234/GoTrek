@@ -1,0 +1,41 @@
+.dashboard-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .profile-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 30px;
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .profile-card-header {
+    margin-bottom: 20px;
+  }
+  
+  .profile-card-body {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-button:hover {
+    background-color: #45a049;
+  }
+  
