@@ -36,10 +36,10 @@ function Goa() {
       <br />
       <br />
       <br />
-      <br />
-      <h1 style={{ color: "orange", textAlign: "center" }}>
-        Goa Treks
-      </h1>
+      
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Goa</h1>
+      </div>
       {treks.map((trek, index) => (
         <div
           key={index}

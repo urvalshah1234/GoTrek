@@ -2,7 +2,6 @@ import React from 'react';
 import './styles/LandingPage.css'; // Assuming you'll style it in this file
 import hero from './assets/hero.jpg'; // Your hero image
 import { useNavigate } from 'react-router-dom';
-
 function LandingPage() {
   const navigate = useNavigate();
   
@@ -43,10 +42,6 @@ function LandingPage() {
               <p>Conquer some of the world's most iconic peaks and enjoy panoramic views that will take your breath away.</p>
             </div>
             <div className="highlight-card">
-              <h3>Lakes Trek</h3>
-              <p>Explore tranquil lakes surrounded by lush forests, a perfect spot for relaxation and reflection.</p>
-            </div>
-            <div className="highlight-card">
               <h3>Wildlife Trek</h3>
               <p>Encounter a variety of wildlife in their natural habitats, from rare birds to elusive mammals.</p>
             </div>
@@ -64,7 +59,7 @@ function LandingPage() {
           <h2>Ready to Start Your Adventure?</h2>
           <button onClick={handleDiscover} className="cta-button">Login now!</button>
         </div>
-        <div style={{textAlign:'center',marginTop:'50px'}} className="footer-copyright">
+        <div style={{textAlign:'center'}} className="footer-copyright">
         <p>&copy; 2024 GoTrek. All rights reserved.</p>
       </div>
       </section>

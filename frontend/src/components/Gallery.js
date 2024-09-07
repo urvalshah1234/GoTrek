@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import "./styles/Layout.css";
 import "./styles/gallery.css";
@@ -17,13 +17,15 @@ function Gallery() {
     <>
       <div className="layout-container">
         <Navbar />
-        <br/>
-        <br/>
         <br />
         <br />
+        <br />
+        <div className="dashboard-banner">
+          <h1 className="dashboard-title">Gallery</h1>
+        </div>
         {/* Photos Section */}
         <section className="gallery-section">
-          <h2 style={{ color: "orange", textAlign: "center" }}>Photos</h2>
+          <h2 style={{ color: "#b8490e", textAlign: "center" }}>Photos</h2>
           <div className="photos">
             <img src={coorg} alt="coorg" />
             <img src={rajmachi} alt="view" />
@@ -36,47 +38,78 @@ function Gallery() {
 
         {/* Videos Section */}
         <section className="gallery-section">
-          <h2 style={{ color: "orange", textAlign: "center" }}>
+          <h2 style={{ color: "#b8490e", textAlign: "center" }}>
             Trekking Videos
           </h2>
           <div className="videos">
             <iframe
-              src="https://www.youtube.com/embed/R5P6jTCEUjA" // Kedarnath Trek
-              title="Kedarnath Trek"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/_e8BFrAPedM?si=bfRo8lZ0NzS2qCJW"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
             <iframe
-              src="https://www.youtube.com/embed/XRgt4cmKp84" // Manali Trekking Adventure
-              title="Manali Trekking Adventure"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/A1OX7Aun72A?si=9uTXlnrV6SM42NFr"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
             <iframe
-              src="https://www.youtube.com/embed/R5P6jTCEUjA"
-              title="Kedarnath Trek"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/ZV8jeAkDFEo?si=lp-79XnCYRetdaXT"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
             <iframe
-              src="https://www.youtube.com/embed/J85RVzEzWIc" // Jungle Trekking Adventure
-              title="Jungle Trekking Adventure"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/rmuuxRaCSH0?si=m0duN25fj4N166ig"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
+
             <iframe
-              src="https://www.youtube.com/embed/NQbQ70nYQpA" // Ladakh Breathtaking Views
-              title="Ladakh Breathtaking Views"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/pwEqaA8ewWw?si=s_89chObPvCSdTpz"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
+
             <iframe
-              src="https://www.youtube.com/embed/LPkzJhPlT1o" // Ladakh - Chadar Trek
-              title="Ladakh - Chadar Trek"
-              allowFullScreen
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/hFh0l7rn-LU?si=OHNZi2TSpYvvP7Rb"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
             ></iframe>
           </div>
         </section>
 
         {/* Blogs Section */}
         <section className="gallery-section">
-          <h2 style={{ color: "orange", textAlign: "center" }}>Blogs</h2>
+          <h2 style={{ color: "#b8490e", textAlign: "center" }}>Blogs</h2>
           <div className="blogs">
             <div className="blog-card">
               <h3>The Ultimate Guide to Trekking in the Himalayas</h3>

@@ -1,4 +1,4 @@
-import React ,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -120,84 +120,21 @@ function Hamta() {
       <br />
       <br />
       <br />
-      <div
-        id="carouselExample"
-        className="carousel slide"
-        data-bs-ride="carousel !important"
-      >
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={triund2} className="d-block w-100" alt="First Slide" />
-          </div>
-          <div className="carousel-item">
-            <img src={triund1} className="d-block w-100" alt="Second Slide" />
-          </div>
-          <div className="carousel-item">
-            <img src={triund3} className="d-block w-100" alt="Third Slide" />
-          </div>
-        </div>
-        <div className="carousel-text">
-          <h2>Hampta pass</h2>
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Hampta Pass</h1>
       </div>
       <br />
-      <h1
-        style={{
-          textAlign: "center",
-          color: "orange",
-          textDecoration: "underline",
-        }}
-      >
-        Hampta pass
-      </h1>
       <h3 style={{ textAlign: "center" }}>
-        One of the Most Dramatic Crossover Treks in the Himalayas
+        <span
+          style={{
+            textAlign: "center",
+            color: "#b8490e",
+            textDecoration: "underline",
+          }}
+        >
+          Hampta Pass{" "}
+        </span>{" "}
+        - One of the Most Dramatic Crossover Treks in the Himalayas
       </h3>
       <div
         className="info-section"
@@ -287,7 +224,7 @@ function Hamta() {
           <h5 style={{ textAlign: "center" }}>
             You can join us from Manali campsite
           </h5>
-          <br/>
+          <br />
           <p style={{ textAlign: "center" }}>
             {" "}
             <button
@@ -309,7 +246,9 @@ function Hamta() {
             borderRadius: "8px",
           }}
         >
-          <h4 style={{ textAlign: "center" }}>Trek Details</h4>
+          <h4 style={{ textAlign: "center", color: "#b8490e" }}>
+            Trek Details
+          </h4>
           <br />
           <div className="details">
             <div className="detail-item">
@@ -358,7 +297,9 @@ function Hamta() {
         </div>
       </div>
       <div className="itinerary-container">
-        <h1 className="itinerary-title">Itinerary of the Trek</h1>
+        <h1 style={{ color: "#b8490e" }} className="itinerary-title">
+          Itinerary of the Trek
+        </h1>
         {itinerary.map((item, index) => (
           <div key={index} className="itinerary-day">
             <h2 className="day-title">{item.day}</h2>
@@ -377,7 +318,7 @@ function Hamta() {
         style={{ display: "flex", marginTop: "20px" }}
       >
         <div className="info-left" style={{ flex: 2, padding: "20px" }}>
-          <h3 style={{ textAlign: "center", color: "orange" }}>
+          <h3 style={{ textAlign: "center", color: "#b8490e" }}>
             Things to know
           </h3>
           <div className="accordion-container">

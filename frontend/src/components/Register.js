@@ -64,6 +64,7 @@ function RegisterForm() {
               onChange={(e) => setFullName(e.target.value)}
               required
             />
+            <CgProfile className="icon" />
           </div>
           <div className="input-box">
             <input

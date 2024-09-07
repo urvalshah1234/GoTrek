@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './styles/Carousel.css';
 import img1 from './assets/img1.jpg';
+import b2 from './assets/b2.jpg'
 import img2 from './assets/img2.jpg';
 import img3 from './assets/img3.jpg';
 
@@ -31,7 +32,7 @@ function Carousel() {
           <img src={img2} className="d-block w-100" alt="First Slide" />
         </div>
         <div className="carousel-item">
-          <img src={img1} className="d-block w-100" alt="Second Slide" />
+          <img src={b2} className="d-block w-100" alt="Second Slide" />
         </div>
         <div className="carousel-item">
           <img src={img3} className="d-block w-100" alt="Third Slide" />

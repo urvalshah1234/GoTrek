@@ -27,7 +27,7 @@ function Trekking() {
   return (
     <>
     <div className="bg-trek-div">
-      <h1 style={{ textAlign: "center" ,color:'orange'}}>Popular States</h1>
+      <h1 style={{ textAlign: "center" ,color:'white',fontWeight:'bold'}}>Popular States</h1>
       <p style={{ textAlign: "center", color: "white" }}>
         Recommended states by our experts
       </p>

@@ -18,10 +18,10 @@ function Activity() {
       <br />
       <br />
       <br />
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Activities</h1>
+      </div>
       <br/>
-      <h1 style={{ textAlign: "center", color: "orange" }}>
-        Activities to do at specific locations
-      </h1>
       <div className="activity-section">
         <div className="activity-image">
           <img src={bike} alt="ladakh bike trip" />

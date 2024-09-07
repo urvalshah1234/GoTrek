@@ -28,11 +28,13 @@
   }
   
   .activity-info h3 {
+    color: #b8490e;
     margin-bottom: 10px;
     font-size: 24px;
   }
   
   .activity-info p {
+    font-family: serif;
     font-size: 16px;
     line-height: 1.5;
   }

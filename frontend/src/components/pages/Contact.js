@@ -15,13 +15,15 @@ function Contact() {
       <br />
       <br />
       <br />
-      <br />
-      <h1 style={{textAlign:'center',color:'orange'}}>GoTrek Locations</h1>
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Contact Us</h1>
+      </div>
+
       <div className="address-sections">
         <div className="address-section">
           <div className="address-content">
             <div className="address-info">
-              <h2>Ahmedabad (Head Office)</h2>
+              <h2 >Ahmedabad (Head Office)</h2>
               <p>
                 308, University Plaza, Above Chocolate Room, Vijay Cross Roads,
                 Navrangpura, Ahmedabad, Gujarat - 380009

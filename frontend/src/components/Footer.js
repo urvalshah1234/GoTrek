@@ -107,8 +107,8 @@ function Footer() {
           <h5 className="footer-heading">Popular States</h5>
           <ul className="footer-list">
             <li>
-              <a onClick={() => navigate("/gujarat")} className="footer-link">
-                Gujarat
+              <a onClick={() => navigate("/ladakh")} className="footer-link">
+                Ladakh
               </a>
             </li>
             <li>
@@ -122,8 +122,8 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a onClick={() => navigate("/uttar")} className="footer-link">
-                Uttarakhand
+              <a onClick={() => navigate("/goa")} className="footer-link">
+                Goa
               </a>
             </li>
           </ul>

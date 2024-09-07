@@ -9,7 +9,11 @@
     transition: transform 0.2s;
     backdrop-filter: blur(30px);
   }
-  
+  .image-card h3
+  {
+    padding: 5px;
+    color: orange;
+  }
   .image-card:hover {
     transform: scale(1.05);
   }

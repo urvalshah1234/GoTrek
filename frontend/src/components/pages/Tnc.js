@@ -13,7 +13,10 @@ function Tnc() {
       <br />
       <br />
       <br/>
-      <br />
+      
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Terms and Conditions</h1>
+      </div>
       <h3 style={{color:'orange'}} >Nature of Events & Activities</h3>
       <p>
         GoTrek is a youth-run Non-Profit Organisation registered under the

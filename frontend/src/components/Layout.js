@@ -28,7 +28,6 @@ function Layout()
                 <Trekking />
                 <Info2/>
                 <Weekend/>
-                <br/>
                 <Special />
                 <People />                
                 <Footer />

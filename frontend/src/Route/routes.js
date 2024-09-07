@@ -7,6 +7,7 @@ import Contact from "../components/pages/Contact";
 import About from "../components/pages/About";
 import RegisterForm from "../components/Register";
 import Verify from "../components/verify";
+import Verify2 from "../components/verify2";
 import Tnc from "../components/pages/Tnc";
 import Activity from "../components/pages/Activity";
 import Dashboard from "../components/pages/Dashboard";
@@ -31,7 +32,7 @@ function AppRoutes() {
       <Route path="/login" element={<LoginForm />} />
       <Route path='/register' element={<RegisterForm />}/>
       <Route path='/verify' element={<Verify />}/>
-      <Route path='/forgot' element={<Verify />}/>
+      <Route path='/forgot' element={<Verify2 />}/>
       <Route path="/home" element={<Layout />} />
       <Route path="/photo" element={<Gallery />}/>
       <Route path="/dashboard" element={<Dashboard/>} />

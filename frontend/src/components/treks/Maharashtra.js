@@ -15,13 +15,6 @@ function Maharashtra() {
   }, []);
   const treks = [
     {
-      name: "Harishchandragad Trek",
-      image: harishchandragad,
-      description:
-        "Harishchandragad Trek is a captivating adventure located in the Western Ghats of Maharashtra. Known for its stunning views and ancient fortifications, this trek takes you through dense forests and rocky terrains, offering panoramic views of the surrounding landscapes. The trek is famous for its cliffside temple and the majestic Konkan Kada, a cliff that offers a breathtaking view of the Konkan region.",
-      link: "/harishchandragad",
-    },
-    {
       name: "Kalsubai Trek",
       image: kalsubai,
       description:
@@ -44,10 +37,10 @@ function Maharashtra() {
       <br />
       <br />
       <br />
-      <br />
-      <h1 style={{ color: "orange", textAlign: "center" }}>
-        Maharashtra Treks
-      </h1>
+      
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Maharashtra</h1>
+      </div>
       {treks.map((trek, index) => (
         <div
           key={index}

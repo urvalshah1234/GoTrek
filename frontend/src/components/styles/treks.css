@@ -24,12 +24,14 @@
   }
   
   .trek-details h2 {
-    color: #ff6600;
+    color: #b8490e;
     margin-bottom: 10px;
   }
   
   .trek-details p {
+    font-family: serif;
     color: #555;
     line-height: 1.6;
+    font-size: 30px;
   }
   

@@ -16,8 +16,9 @@ function Dashboard() {
       <br />
       <br />
       <br />
-      <br />
-      <h1 style={{ textAlign: 'center',color:'orange' }}>User Dashboard</h1>
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">User Dashboard</h1>
+      </div>
       <div className="dashboard-content">
         <div className="profile-card">
           <div className="profile-card-header">

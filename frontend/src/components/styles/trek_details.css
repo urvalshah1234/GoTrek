@@ -19,16 +19,18 @@
   }
   .Finalize_button
   {
-    background-color: #28a745;
+    background-color: #b8490e;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2rem;
+    transition: all ease-in-out ;
     &:hover
     {
-        background-color: #218838;
-
+      letter-spacing: 0.05em;
+      background-color: #f65f0e;
+      box-shadow: 0 0 10px #b8490e;
     }
   }
   

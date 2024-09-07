@@ -37,41 +37,43 @@ body, html {
   }
   
   .cta-button {
-    background-color: #28a745;
+    background-color: #b8490e;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
     font-size: 1.2rem;
+    border-radius: 30px;
+    transition: all ease-in-out ;
   }
   
   .cta-button:hover {
-    background-color: #218838;
+    letter-spacing: 0.05em;
+    background-color: #f65f0e;
+    box-shadow: 0 0 10px #b8490e;
   }
-  
   /* Trek Information Section */
   .trek-info {
+    font-family: serif;
     padding: 50px 0;
     background-color: #f8f9fa;
   }
-  .trek-info .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
   
   .trek-info h2 {
-    font-size: 2.5rem;
+    color: #b8490e;
+    font-weight: bold;
+    font-size: 3.5rem;
     margin-bottom: 20px;
   }
   
   .trek-info p {
-    font-size: 1.2rem;
+    font-size: 2rem;
     line-height: 1.6;
   }
   
   /* Highlights Section */
   .highlights {
-    padding: 50px 0;
+    font-family: serif;
+    padding: 30px 0;
     background-color: white;
   }
   
@@ -81,8 +83,10 @@ body, html {
   }
   
   .highlights h2 {
+    color: #b8490e;
+    font-weight: bold;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   
   .highlight-cards {
@@ -93,42 +97,44 @@ body, html {
   
   .highlight-card {
     width: 30%;
-    padding: 20px;
-    background-color: #f8f9fa;
+    padding: 15px 15px 0px 15px;
+    background-color: #f8f4ea;
     margin: 10px;
+    font-family: serif;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .highlight-card:hover
   {
-    background-color: grey;
+    background-color: #f8eccf;
   }
   .highlight-card h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 10px;
   }
   
   .highlight-card p {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.5;
   }
   
   /* Call to Action Section */
   .call-to-action {
-    padding: 50px 0;
-    background-color: #28a745;
+    padding: 20px;
+    background-color: #b8490e;
     color: white;
   }
   
   .call-to-action h2 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .call-to-action .cta-button {
     background-color: white;
-    color: #28a745;
-    padding: 10px 20px;
+    color: #b8490e;
+    /* padding: 10px 20px; */
+    margin-bottom: 20px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -136,5 +142,7 @@ body, html {
   
   .call-to-action .cta-button:hover {
     background-color: #e9ecef;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 10px #b8490e;
   }
   

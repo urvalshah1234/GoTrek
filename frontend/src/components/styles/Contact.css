@@ -2,8 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
   }
-  
+  .address-info h2{
+    color: #b8490e;
+  }
   .address-section {
     display: flex;
     justify-content: space-between;

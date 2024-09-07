@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../styles/Layout.css";
+import "../styles/about_us.css";
 function About() {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component is mounted
@@ -12,18 +13,21 @@ function About() {
       <br />
       <br />
       <br/>
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">About Us</h1>
+      </div>
       <br/>
       <section className="mission">
-        <h3 style={{color:'orange'}}>Our Mission</h3>
-        <p>
+        <h3 style={{fontSize:'30px',color:'#b8490e',textAlign:'center'}}>Our Mission</h3>
+        <p style={{fontFamily:'serif',fontSize:'25px',padding:'0px 25px 0px 25px',textAlign:'center'}}>
           Our mission is to provide safe, memorable, and eco-friendly trekking
           experiences that connect people with nature and foster a love for
           adventure.
         </p>
       </section>
       <section className="offer">
-        <h3 style={{color:'orange'}}>What we offer?</h3>
-        <p>
+        <h3 style={{fontSize:'30px',color:'#b8490e',textAlign:'center'}}>What we offer?</h3>
+        <p style={{fontFamily:'serif',fontSize:'25px',padding:'0px 25px 0px 25px',textAlign:'center'}}>
           <ul>
             <li>
               Guided Trekking Adventures: We offer a range of trekking options
@@ -52,8 +56,8 @@ function About() {
         </p>
       </section>
       <section className="choose">
-        <h3 style={{color:'orange'}}>Why choose us?</h3>
-        <p>
+        <h3 style={{fontSize:'30px',color:'#b8490e',textAlign:'center'}}>Why choose us?</h3>
+        <p style={{fontFamily:'serif',fontSize:'25px',padding:'0px 25px 0px 25px',textAlign:'center'}}>
           <ul>
             <li>
               Expert Guides: Our guides are certified professionals with
