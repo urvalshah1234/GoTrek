@@ -5,9 +5,13 @@ import Footer from "../Footer";
 import "../styles/Carousel.css";
 import "../styles/Layout.css";
 import "../styles/trek_details.css";
-import triund1 from "../assets/triund1.jpg";
-import triund2 from "../assets/triund2.jpg";
-import triund3 from "../assets/triund3.jpg";
+import "../styles/gallery.css";
+import coorg from "../assets/coorg.jpg";
+import dang from "../assets/dang.jpg";
+import hamta from "../assets/hamta.jpg";
+import triund from "../assets/triund.jpg";
+import img2 from "../assets/img2.jpg";
+import rajmachi from "../assets/rajmachi.jpg";
 import { FaMountain } from "react-icons/fa";
 import { IoCalendarOutline } from "react-icons/io5";
 import { CiMap } from "react-icons/ci";
@@ -296,6 +300,16 @@ function Hamta() {
           </div>
         </div>
       </div>
+      <section className="gallery-section">
+          <div className="Photos">
+            <img src={coorg} alt="coorg" />
+            <img src={rajmachi} alt="view" />
+            <img src={triund} alt="view" />
+            <img src={img2} alt="view" />
+            <img src={hamta} alt="view" />
+            <img src={dang} alt="view" />
+          </div>
+        </section>
       <div className="itinerary-container">
         <h1 style={{ color: "#b8490e" }} className="itinerary-title">
           Itinerary of the Trek
