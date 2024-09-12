@@ -130,3 +130,24 @@ def profile_view(request):
                 status=status.HTTP_200_OK if not created else status.HTTP_201_CREATED
             )
         return Response({"error": "Email parameter not provided"}, status=status.HTTP_400_BAD_REQUEST)
+
+# views.py
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Booking
+from .serializers import BookingSerializer
+
+@api_view(['POST'])
+def create_booking(request):
+    serializer = BookingSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def list_bookings(request):
+    bookings = Booking.objects.all().values('state', 'trek', 'price', 'trek_date', 'payment_method')
+    return Response(bookings, status=status.HTTP_200_OK)
+

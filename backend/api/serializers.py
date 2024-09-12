@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser,Profile,Booking
 from django.contrib.auth import authenticate
 
 
@@ -43,7 +43,6 @@ class LoginSerializer(serializers.Serializer):
         
         return data
     
-from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
@@ -52,3 +51,17 @@ class ProfileSerializer(serializers.ModelSerializer):
             'height', 'weight', 'contact_number', 'email', 
             'blood_group', 'address'
         ]
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = [
+            'state', 'trek', 'price', 'trek_date', 'emergency_contact_name',
+            'emergency_contact_phone', 'accommodation', 'special_requests',
+            'equipment_rental', 'payment_method', 'liability_waiver'
+        ]
+        extra_kwargs = {
+            'price': {'required': True},
+            'emergency_contact_name': {'required': True},
+            'emergency_contact_phone': {'required': True},
+        }

@@ -40,22 +40,6 @@ function Profile() {
       address: address,
     };
 
-    //   try {
-    //     const response = await axios.post(
-    //       "http://localhost:8000/profile_view/",
-    //       profileData
-    //     );
-    //     if (response.data.success) {
-    //       alert("Profile saved successfully!");
-    //       navigate("/updated_profile");
-    //     } else {
-    //       alert("Profile update failed: " + response.data.message);
-    //     }
-    //   } catch (error) {
-    //     console.error("There was an error saving the profile!", error);
-    //     alert("There was an error saving the profile!");
-    //   }
-    // };
     try {
       const response = await axios.post(
         "http://localhost:8000/profile_view/",
@@ -76,6 +60,7 @@ function Profile() {
   return (
     <div className="layout-container">
       <Navbar />
+      <br />
       <br />
       <br />
       <div className="profile-container">

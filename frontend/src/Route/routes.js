@@ -23,6 +23,7 @@ import Kerala from "../components/treks/Kerala";
 import Meghalaya from "../components/treks/Meghalaya";
 import NotFound from "../components/NotFound";
 import Book from "../components/book";
+import Booking from "../components/pages/bookings";
 
 function AppRoutes() {
   return (
@@ -50,6 +51,7 @@ function AppRoutes() {
       <Route path="/mh" element={<Maharashtra />} />
       <Route path="/update_profile" element={<UpdateProfile />} /> {/* Add the route here */}
       <Route path='/book_trek' element={<Book/>}/>
+      <Route path='/bookings' element={<Booking/>}/>
     </Routes>
   );
 }

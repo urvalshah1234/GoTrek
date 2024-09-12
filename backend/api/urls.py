@@ -9,4 +9,8 @@ urlpatterns = [
     path('send_otp/',views.send_otp,name='send_otp'),
 
     path('profile_view/', views.profile_view, name='profile_view'),
+    path('bookings/', views.create_booking, name='create_booking'),
+    path('yourbookings/', views.list_bookings, name='list_bookings'),
+
+
 ]
