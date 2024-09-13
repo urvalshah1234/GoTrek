@@ -61,33 +61,6 @@ def verify_otp(request):
         return Response({"message": "Invalid or expired OTP"}, status=status.HTTP_400_BAD_REQUEST)
     except OTP.DoesNotExist:
         return Response({"message": "OTP does not exist"}, status=status.HTTP_400_BAD_REQUEST)
-# from rest_framework import status
-# from rest_framework.response import Response
-# from rest_framework.decorators import api_view
-# from .models import Profile
-# from .serializers import ProfileSerializer
-
-# @api_view(['GET', 'POST'])
-# def profile_view(request):
-#     if request.method == 'GET':
-#         try:
-#             profile = request.profile
-#             serializer = ProfileSerializer(profile)
-#             return Response(serializer.data, status=status.HTTP_200_OK)
-#         except Profile.DoesNotExist:
-#             return Response({"error": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
-
-#     elif request.method == 'POST':
-#         serializer = ProfileSerializer(data=request.data)
-#         if serializer.is_valid():
-#             profile, created = Profile.objects.update_or_create(
-#                 defaults=serializer.validated_data
-#             )
-#             return Response(
-#                 {"success": True, "message": "Profile updated successfully"}, 
-#                 status=status.HTTP_200_OK if not created else status.HTTP_201_CREATED
-#             )
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -100,17 +73,26 @@ def profile_view(request):
     if request.method == 'GET':
         email = request.query_params.get('email')
         if email:
+            # Check if the email is registered
+            if not CustomUser.objects.filter(email=email).exists():
+                return Response({"error": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
+            
             try:
                 profile = Profile.objects.get(email=email)
                 serializer = ProfileSerializer(profile)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except Profile.DoesNotExist:
                 return Response({"error": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
+        
         return Response({"error": "Email parameter not provided"}, status=status.HTTP_400_BAD_REQUEST)
-
+    
     elif request.method == 'POST':
         email = request.data.get('email')
         if email:
+            # Check if the email is registered
+            if not CustomUser.objects.filter(email=email).exists():
+                return Response({"error": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
+            
             profile, created = Profile.objects.update_or_create(
                 email=email,
                 defaults={
@@ -129,7 +111,9 @@ def profile_view(request):
                 {"success": True, "message": "Profile updated successfully"}, 
                 status=status.HTTP_200_OK if not created else status.HTTP_201_CREATED
             )
+        
         return Response({"error": "Email parameter not provided"}, status=status.HTTP_400_BAD_REQUEST)
+
 
 # views.py
 from rest_framework import status
@@ -151,3 +135,31 @@ def list_bookings(request):
     bookings = Booking.objects.all().values('state', 'trek', 'price', 'trek_date', 'payment_method')
     return Response(bookings, status=status.HTTP_200_OK)
 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .models import Profile
+from .serializers import ProfileSerializer
+
+# Create a new profile
+@api_view(['POST'])
+def create_profile(request):
+    serializer = ProfileSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': True, 'data': serializer.data}, status=status.HTTP_201_CREATED)
+    return Response({'success': False, 'message': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+# Update an existing profile by id
+@api_view(['PUT'])
+def update_profile(request, pk):
+    try:
+        profile = Profile.objects.get(pk=pk)
+    except Profile.DoesNotExist:
+        return Response({'success': False, 'message': 'Profile not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    serializer = ProfileSerializer(profile, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': True, 'data': serializer.data})
+    return Response({'success': False, 'message': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

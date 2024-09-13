@@ -26,8 +26,8 @@ function UpdateProfile() {
     }
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="updated-profile-loading">Loading...</p>;
+  if (error) return <p className="updated-profile-error">{error}</p>;
 
   return (
     <>
@@ -35,27 +35,46 @@ function UpdateProfile() {
       <br/>
       <br/>
       <br/>
-      <div className="update-profile-container">
-        <h1 className="profile-title-update">Profile Details</h1>
-        {profile && (
-          <div className="profile-card-update">
-            <div className="profile-info-update">
-              <p><strong>First Name:</strong> {profile.first_name}</p>
-              <p><strong>Last Name:</strong> {profile.last_name}</p>
-              <p><strong>Birthday:</strong> {profile.birthday}</p>
-              <p><strong>Gender:</strong> {profile.gender}</p>
-              <p><strong>Height:</strong> {profile.height} cm</p>
-              <p><strong>Weight:</strong> {profile.weight} kg</p>
-              <p><strong>Contact Number:</strong> {profile.contact_number}</p>
-              <p><strong>Email:</strong> {profile.email}</p>
-              <p><strong>Blood Group:</strong> {profile.blood_group}</p>
-              <p><strong>Address:</strong> {profile.address}</p>
+      <div className="updated-profile-bg">
+        <div className="updated-profile-content">
+          <h1 className="updated-profile-title">{profile.first_name} {profile.last_name}</h1>
+          <div className="updated-profile-details">
+            <div className="updated-profile-detail">
+              <h2>Contact Number</h2>
+              <p>{profile.contact_number}</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Email</h2>
+              <p>{profile.email}</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Birthday</h2>
+              <p>{profile.birthday}</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Gender</h2>
+              <p>{profile.gender}</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Height</h2>
+              <p>{profile.height} cm</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Weight</h2>
+              <p>{profile.weight} kg</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Blood Group</h2>
+              <p>{profile.blood_group}</p>
+            </div>
+            <div className="updated-profile-detail">
+              <h2>Address</h2>
+              <p>{profile.address}</p>
             </div>
           </div>
-        )}
+        </div>
       </div>
       <Footer />
-      
     </>
   );
 }

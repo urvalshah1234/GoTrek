@@ -28,14 +28,16 @@
   
   .save-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #b8490e;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
   }
   
   .save-button:hover {
-    background-color: #45a049;
+    letter-spacing: 0.05em;
+    background-color: #f65f0e;
+    box-shadow: 0 0 10px #b8490e;
   }
   

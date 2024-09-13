@@ -1,59 +1,52 @@
-.update-profile-container {
-    background: url('../assets/fantasy-style-scene-with-mountains-landscape.jpg') no-repeat center center fixed;
-    background-size: cover;
-    padding: 50px;
-    max-width: 900px;
-    margin: auto;
-    /* background-color: #f9f9f9; */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-  }
-  
-  .profile-title-update {
-    text-align: center;
-    color: orange;
-    margin-bottom: 20px;
-    font-size: 2rem;
-  }
-  
-  .profile-card-update {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 20px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .profile-info-update {
-    flex: 1;
-  }
-  
-  .profile-info-update p {
-    margin: 8px 0;
-    font-size: 1rem;
-    color: black;
-  }
-  
-  .profile-info-update p strong {
-    color: #333;
-  }
-  
-  .profile-info-update p:not(:last-child) {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .profile-card-update {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  
+/* UpdateProfile.css */
+
+.updated-profile-bg {
+  background-color: #b8490e;
+  padding: 100px 0;
+}
+
+.updated-profile-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.updated-profile-title {
+  color: #b8490e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.updated-profile-details {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.updated-profile-detail {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.updated-profile-detail h2 {
+  font-weight: bold;
+  color: #b8490e;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.updated-profile-detail p {
+  margin: 5px 0;
+}
+
+.updated-profile-loading,
+.updated-profile-error {
+  text-align: center;
+  margin-top: 20px;
+}

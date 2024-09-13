@@ -11,6 +11,18 @@ function Profile() {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    const registeredEmail = localStorage.getItem("registeredEmail");
+    if (registeredEmail) {
+      setEmail(registeredEmail);
+    }
+  }, []);
+
+  const handleEmailChange = (value) => {
+    setEmail(value);
+    localStorage.setItem("registeredEmail", value);
+  };
+
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
@@ -64,7 +76,7 @@ function Profile() {
       <br />
       <br />
       <div className="profile-container">
-        <h1 style={{ color: "orange", textAlign: "center" }}>Profile Page</h1>
+        <h1 style={{ color: "#b8490e", textAlign: "center" }}>Profile Page</h1>
         <form onSubmit={handleSubmit} className="profile-form">
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
@@ -84,6 +96,17 @@ function Profile() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => handleEmailChange(e.target.value)}
+              required
+              disabled={!!email} // Disable if email is already set
             />
           </div>
           <div className="form-group">
@@ -137,16 +160,6 @@ function Profile() {
               id="contactNumber"
               value={contactNumber}
               onChange={(e) => setContactNumber(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
