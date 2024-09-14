@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.conf import settings
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, full_name, password=None, phone_number=None):
@@ -8,7 +10,7 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError('The Email field must be set')
         user = self.model(username=username, email=email, full_name=full_name, phone_number=phone_number)
-        user.set_password(password)  # Use set_password to hash the password
+        user.set_password(password)  
         user.save(using=self._db)
         return user
 
@@ -19,7 +21,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=255)
     username = models.CharField(max_length=150, unique=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
@@ -32,7 +34,7 @@ class CustomUser(AbstractBaseUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'full_name']
 
-    def __str__(self):
+    def _str_(self):
         return self.username
     
 from django.utils import timezone
@@ -68,8 +70,8 @@ class Profile(models.Model):
     email = models.EmailField()
     blood_group = models.CharField(max_length=5)
     address = models.TextField()
-
-    def __str__(self):
+    
+    def _str_(self):
         return f"{self.first_name}'s Profile"
     
 class Booking(models.Model):
@@ -85,5 +87,5 @@ class Booking(models.Model):
     payment_method = models.CharField(max_length=50)
     liability_waiver = models.BooleanField(default=False)
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.trek} booking for {self.state}"
