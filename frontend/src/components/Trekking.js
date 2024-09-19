@@ -44,9 +44,9 @@ function Trekking() {
         {cards.map((card, index) => (
           <ImageCard
             key={index}
-            title={card.title}
             imageUrl={card.imageUrl}
             onClick={() => handleCardClick(card.link)}
+            title={card.title}
           />
         ))}
       </div>

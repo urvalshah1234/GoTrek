@@ -41,6 +41,7 @@ const treksByState = {
 };
 
 function BookNow() {
+  const [email, setEmail] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [availableTreks, setAvailableTreks] = useState([]);
   const [selectedTrek, setSelectedTrek] = useState("");
@@ -76,12 +77,24 @@ function BookNow() {
     const trek = availableTreks.find((trek) => trek.name === selectedOption);
     setSelectedTrekPrice(trek ? trek.price : "");
   };
+  useEffect(() => {
+    const registeredEmail = localStorage.getItem("registeredEmail");
+    if (registeredEmail) {
+      setEmail(registeredEmail);
+    }
+  }, []);
 
+  const handleEmailChange = (value) => {
+    setEmail(value);
+    localStorage.setItem("registeredEmail", value);
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Create the data object to send to the backend
     const bookingData = {
+      email: email,  // Include the email field
       state: selectedState,
       trek: selectedTrek,
       price: selectedTrekPrice,
@@ -98,14 +111,18 @@ function BookNow() {
     try {
       // Make the POST request to your Django backend
       const response = await axios.post(
-        "http://localhost:8000/bookings/",
+        "http://localhost:8000/bookings/",  // Ensure this is the correct API endpoint
         bookingData
       );
       console.log(response.data);
       alert("Booking submitted successfully!");
     } catch (error) {
-      console.error("There was an error making the request:", error);
-      alert("Failed to submit booking. Please try again.");
+      console.error("There was an error making the request:", error.response.data);
+      if (error.response.data.error) {
+        alert(`Error: ${error.response.data.error}`);
+      } else {
+        alert("Failed to submit booking. Please try again.");
+      }
     }
   };
 
@@ -126,6 +143,20 @@ function BookNow() {
               experience.
             </p>
             <form className="booking-form" onSubmit={handleSubmit}>
+              
+              {/* Email field */}
+              <div className="booking-form-group">
+                <label htmlFor="email">Email:</label>
+                <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => handleEmailChange(e.target.value)}
+              required
+              disabled={!!email} 
+            />
+              </div>
+
               <div className="booking-form-group">
                 <label htmlFor="state">Select State:</label>
                 <select
@@ -243,28 +274,27 @@ function BookNow() {
                   value={paymentMethod}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
-                  <option value="">Select</option>
-                  <option value="Online">Online</option>
-                  <option value="Cash">Cash</option>
+                  <option value="">Select a payment method</option>
+                  <option value="credit_card">Credit Card</option>
+                  <option value="debit_card">Debit Card</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="upi">UPI</option>
                 </select>
               </div>
 
-              <div className="booking-form-group booking-liability-checkbox">
-                <label
-                  htmlFor="liabilityWaiver"
-                  className="booking-liability-label"
-                >
-                  I agree to trek at my own risk.
+              <div className="booking-form-group">
+                <label htmlFor="liabilityWaiver">
+                  <input
+                    type="checkbox"
+                    id="liabilityWaiver"
+                    checked={liabilityWaiver}
+                    onChange={(e) => setLiabilityWaiver(e.target.checked)}
+                  />
+                  I agree to the liability waiver terms and conditions
                 </label>
-                <input
-                  type="checkbox"
-                  id="liabilityWaiver"
-                  checked={liabilityWaiver}
-                  onChange={(e) => setLiabilityWaiver(e.target.checked)}
-                />
               </div>
 
-              <button type="submit" className="booking-button">
+              <button type="submit" className="booking-submit-button">
                 Book Now
               </button>
             </form>

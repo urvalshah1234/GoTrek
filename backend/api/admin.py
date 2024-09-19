@@ -46,7 +46,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('state', 'trek', 'price', 'trek_date', 'emergency_contact_name')
-    search_fields = ('state', 'trek')
-    list_filter = ('trek_date', 'payment_method')
+    list_display = ('email','state', 'trek', 'price', 'trek_date', 'emergency_contact_name')
+    search_fields = ('state', 'trek','email')
+    list_filter = ('trek_date', 'payment_method','email')
     readonly_fields = ('trek_date',)

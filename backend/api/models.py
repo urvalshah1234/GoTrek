@@ -75,6 +75,7 @@ class Profile(models.Model):
         return f"{self.first_name}'s Profile"
     
 class Booking(models.Model):
+    email = models.EmailField()
     state = models.CharField(max_length=100)
     trek = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)

@@ -80,7 +80,7 @@ function People() {
             <img
               src={review.image}
               alt={review.name}
-              style={{ width: "100%", height: "auto", borderRadius: "30px" }}
+              style={{ width: "30%", height: "auto", borderRadius: "100px" }}
             />
             <h3 style={{color:'#b8490e'}} >{review.name}</h3>
             <p>{review.description}</p>
