@@ -74,6 +74,10 @@ TEMPLATES = [
         },
     },
 ]
+
+MEDIASTACK_API_KEY = 'bd3bcefe8ad74698d4bb931cad87f97f'
+OPENWEATHER_API_KEY = '9d0099fd46e159c571f128f9637fd854'
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]

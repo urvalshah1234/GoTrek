@@ -102,33 +102,6 @@ function Footer() {
             </li>
           </ul>
         </div>
-
-        <div className="footer-section">
-          <h5 className="footer-heading">Popular States</h5>
-          <ul className="footer-list">
-            <li>
-              <a onClick={() => navigate("/ladakh")} className="footer-link">
-                Ladakh
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/himachal")} className="footer-link">
-                Himachal
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/mh")} className="footer-link">
-                Maharashtra
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/goa")} className="footer-link">
-                Goa
-              </a>
-            </li>
-          </ul>
-        </div>
-
         <div className="footer-section">
           <h5 className="footer-heading">Quick Links</h5>
           <ul className="footer-list">
@@ -155,6 +128,52 @@ function Footer() {
             <li>
               <a onClick={() => navigate("/about")} className="footer-link">
                 About Us
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="footer-section">
+          <h5 className="footer-heading">Additional Features</h5>
+          <ul className="footer-list">
+            <li>
+              <a onClick={() => navigate("/news")} className="footer-link">
+                News
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/weather")} className="footer-link">
+                Weather
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/packing")} className="footer-link">
+                Packing Checklist
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h5 className="footer-heading">Popular States</h5>
+          <ul className="footer-list">
+            <li>
+              <a onClick={() => navigate("/ladakh")} className="footer-link">
+                Ladakh
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/himachal")} className="footer-link">
+                Himachal
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/mh")} className="footer-link">
+                Maharashtra
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/goa")} className="footer-link">
+                Goa
               </a>
             </li>
           </ul>

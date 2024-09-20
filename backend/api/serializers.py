@@ -65,3 +65,4 @@ class BookingSerializer(serializers.ModelSerializer):
             'emergency_contact_name': {'required': True},
             'emergency_contact_phone': {'required': True},
         }
+        

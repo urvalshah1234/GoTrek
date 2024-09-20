@@ -1,0 +1,98 @@
+.weather-layout-container {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height */
+    margin: auto;
+    background: url('../assets/weather.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.weather-card {
+    width: 500px;
+    height: auto;
+    text-align: center;
+    backdrop-filter: blur(20px) saturate(50%);
+    background-color: transparent;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px; /* Padding for the card */
+}
+
+.weather-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-input {
+    padding: 15px;
+    border-radius: 50px;
+    text-align: center;
+    border: none;
+    background: #e1ede4;
+    font-size: 16px;
+    margin-bottom: 10px; /* Space between input and button */
+}
+
+.weather-input:focus {
+    outline: none;
+}
+
+.weather-button {
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 10px;
+    color: white;
+    background: #b8490e;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.weather-button:hover {
+    letter-spacing: 0.05em;
+    background-color: #f65f0e;
+    box-shadow: 0 0 10px #b8490e;
+}
+
+.weather-button:focus {
+    outline: none;
+}
+
+.weather-button:active {
+    padding-top: 8px;
+}
+
+.weather-title {
+    color:  #b8490e;
+    margin: 10px 0; /* Space between title and other elements */
+    text-transform: uppercase; /* Capitalize city name */
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 15px; /* Space between sections */
+    margin-top: 20px; /* Space above details */
+}
+
+.weather-section {
+    background: rgba(255, 255, 255, 0.1); /* Light background for sections */
+    padding: 10px;
+    border-radius: 8px;
+    color:  black;
+}
+
+.weather-temp,
+.weather-description,
+.weather-humidity,
+.weather-wind-speed {
+    margin: 10px 0; /* Space between text elements */
+}
+
+.weather-error {
+    color:  #b8490e;
+    margin-top: 10px;
+    font-weight: bold;
+}

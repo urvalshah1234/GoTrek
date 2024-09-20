@@ -1,4 +1,3 @@
-# Import necessary modules and classes
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -114,8 +113,19 @@ def create_booking(request):
 
 @api_view(['GET'])
 def list_bookings(request):
-    bookings = Booking.objects.all().values('state', 'trek', 'price', 'trek_date', 'payment_method')
+    bookings = Booking.objects.all().values('id', 'state', 'trek', 'price', 'trek_date', 'payment_method')
     return Response(bookings, status=status.HTTP_200_OK)
+
+# Delete Booking View
+@api_view(['DELETE'])
+def delete_booking(request, pk):
+    try:
+        booking = Booking.objects.get(pk=pk)
+        booking.delete()
+        return Response({"message": "Booking deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+    except Booking.DoesNotExist:
+        return Response({"error": "Booking not found"}, status=status.HTTP_404_NOT_FOUND)
+
 
 # Create Profile View
 @api_view(['POST'])
@@ -139,3 +149,26 @@ def update_profile(request, pk):
         serializer.save()
         return Response({'success': True, 'data': serializer.data})
     return Response({'success': False, 'message': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+from rest_framework.response import Response
+import requests
+from django.conf import settings
+
+@api_view(['GET'])  # Allow both GET and PUT requests
+def fetch_news(request):
+    if request.method == 'GET':
+        url = f"http://api.mediastack.com/v1/news?access_key={settings.MEDIASTACK_API_KEY}&languages=en&keywords=travel&countries=IN"
+        response = requests.get(url)
+        data = response.json()
+        return Response(data)
+
+@api_view(['GET'])
+def fetch_weather(request):
+    city = request.GET.get('city')
+    if city:
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={settings.OPENWEATHER_API_KEY}&units=metric"
+        response = requests.get(url)
+        data = response.json()
+        return Response(data)
+    else:
+        return Response({"error": "City parameter is required."}, status=400)

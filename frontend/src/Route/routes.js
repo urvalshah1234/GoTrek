@@ -24,6 +24,9 @@ import Meghalaya from "../components/treks/Meghalaya";
 import NotFound from "../components/NotFound";
 import Book from "../components/book";
 import Booking from "../components/pages/bookings";
+import News from "../components/pages/News";
+import Weather from "../components/pages/Weather";
+import Packing from "../components/pages/Packing";
 
 function AppRoutes() {
   return (
@@ -52,6 +55,9 @@ function AppRoutes() {
       <Route path="/update_profile" element={<UpdateProfile />} /> {/* Add the route here */}
       <Route path='/book_trek' element={<Book/>}/>
       <Route path='/bookings' element={<Booking/>}/>
+      <Route path='/news' element={<News/>}/>
+      <Route path='/packing' element={<Packing/>}/>
+      <Route path='/weather' element={<Weather/>}/>
     </Routes>
   );
 }

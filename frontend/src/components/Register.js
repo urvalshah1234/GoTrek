@@ -41,7 +41,7 @@ function RegisterForm() {
         // Store the email in localStorage
         localStorage.setItem("registeredEmail", gmail);
         alert(response.data.message);
-        navigate("/verify");
+        navigate("/login");
       } else {
         alert("Sign up failed: " + response.data.message);
       }
@@ -118,6 +118,10 @@ function RegisterForm() {
           </div>
           <button type="submit">Sign up</button>
         </form>
+        <div className="register-link">
+            <p>Already have an account?</p>
+            <a className="register-link" onClick={() => navigate("/login")}>Sign in?</a>
+          </div>
       </div>
     </div>
   );

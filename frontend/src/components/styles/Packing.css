@@ -1,0 +1,30 @@
+.packing-layout-container {
+    background: rgb(243, 202, 149);
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding around the content */
+}
+
+.packing-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Light card background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    width: 600px; /* Fixed width for the card */
+}
+
+.packing-card h1 {
+    text-align: center;
+    color: #b8490e;
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.packing-item {
+    display: flex;
+    justify-content: space-between; /* Space between text and checkbox */
+    align-items: center;
+    margin: 10px 0; /* Space between items */
+}

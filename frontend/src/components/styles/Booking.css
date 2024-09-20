@@ -48,4 +48,45 @@
     color: #888; /* Gray color for the message */
     margin: 40px;
   }
+  .booking-card-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .delete-button, .paynow-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .delete-button {
+    margin-left: 10px;
+    background-color: #ff4d4d; /* Red color for delete */
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #e33d3d;
+    transform: translateY(-2px);
+  }
+  
+  .pay-now-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px; /* Add margin for spacing */
+    margin-right: 10px;
+  }
+  
+  .pay-now-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
   

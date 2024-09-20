@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -15,32 +16,34 @@ const states = [
 
 const treksByState = {
   "Himachal-pradesh": [
-    { name: "Hampta Pass Trek", price: "10000" },
+    { name: "Hampta Pass Trek", price: "13000" },
     { name: "Triund Trek", price: "9000" },
   ],
   Goa: [
     { name: "Dudhsagar Falls Trek", price: "10000" },
-    { name: "Tambdi Surla Trek", price: "9000" },
+    { name: "Tambdi Surla Trek", price: "6000" },
   ],
   Kerela: [
-    { name: "Agasthyakoodam Trek", price: "10000" },
-    { name: "Chembra Peak Trek", price: "9000" },
+    { name: "Agasthyakoodam Trek", price: "15000" },
+    { name: "Chembra Peak Trek", price: "17000" },
   ],
   Ladakh: [
-    { name: "Chadar Trek", price: "10000" },
-    { name: "Stok Kangri Trek", price: "9000" },
+    { name: "Chadar Trek", price: "11000" },
+    { name: "Stok Kangri Trek", price: "8000" },
   ],
   Maharashtra: [
-    { name: "Kalsubai Trek", price: "10000" },
-    { name: "Rajmachi Trek", price: "9000" },
+    { name: "Kalsubai Trek", price: "14000" },
+    { name: "Rajmachi Trek", price: "8000" },
   ],
   Meghalaya: [
-    { name: "Living Root Bridges Trek", price: "10000" },
-    { name: "Nokrek Peak Trek", price: "9000" },
+    { name: "Living Root Bridges Trek", price: "12000" },
+    { name: "Nokrek Peak Trek", price: "7000" },
   ],
 };
 
 function BookNow() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [availableTreks, setAvailableTreks] = useState([]);
@@ -56,6 +59,8 @@ function BookNow() {
   const [equipmentRental, setEquipmentRental] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [liabilityWaiver, setLiabilityWaiver] = useState(false);
+
+  const today = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component is mounted
@@ -88,13 +93,22 @@ function BookNow() {
     setEmail(value);
     localStorage.setItem("registeredEmail", value);
   };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Confirmation dialog
+    const confirmBooking = window.confirm(
+      "Are you sure you want to submit your booking?"
+    );
+
+    if (!confirmBooking) {
+      console.log("Booking submission canceled.");
+      return; // Exit the function if the user cancels
+    }
+
     // Create the data object to send to the backend
     const bookingData = {
-      email: email,  // Include the email field
+      email: email, // Include the email field
       state: selectedState,
       trek: selectedTrek,
       price: selectedTrekPrice,
@@ -111,13 +125,17 @@ function BookNow() {
     try {
       // Make the POST request to your Django backend
       const response = await axios.post(
-        "http://localhost:8000/bookings/",  // Ensure this is the correct API endpoint
+        "http://localhost:8000/bookings/", // Ensure this is the correct API endpoint
         bookingData
       );
       console.log(response.data);
       alert("Booking submitted successfully!");
+      navigate("/home");
     } catch (error) {
-      console.error("There was an error making the request:", error.response.data);
+      console.error(
+        "There was an error making the request:",
+        error.response.data
+      );
       if (error.response.data.error) {
         alert(`Error: ${error.response.data.error}`);
       } else {
@@ -143,18 +161,17 @@ function BookNow() {
               experience.
             </p>
             <form className="booking-form" onSubmit={handleSubmit}>
-              
               {/* Email field */}
               <div className="booking-form-group">
                 <label htmlFor="email">Email:</label>
                 <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => handleEmailChange(e.target.value)}
-              required
-              disabled={!!email} 
-            />
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => handleEmailChange(e.target.value)}
+                  required
+                  disabled={!!email}
+                />
               </div>
 
               <div className="booking-form-group">
@@ -203,6 +220,7 @@ function BookNow() {
                   id="trekDate"
                   value={trekDate}
                   onChange={(e) => setTrekDate(e.target.value)}
+                  min={today} // Set min to today's date
                 />
               </div>
 
@@ -275,26 +293,26 @@ function BookNow() {
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
                   <option value="">Select a payment method</option>
-                  <option value="credit_card">Credit Card</option>
+                  <option value="cash">Cash</option>
                   <option value="debit_card">Debit Card</option>
-                  <option value="paypal">PayPal</option>
                   <option value="upi">UPI</option>
                 </select>
               </div>
 
               <div className="booking-form-group">
-                <label htmlFor="liabilityWaiver">
+                <label className="liability-waiver-label">
+                  I agree to the liability waiver terms and conditions
                   <input
                     type="checkbox"
                     id="liabilityWaiver"
+                    className="booking-liability-checkbox"
                     checked={liabilityWaiver}
                     onChange={(e) => setLiabilityWaiver(e.target.checked)}
                   />
-                  I agree to the liability waiver terms and conditions
                 </label>
               </div>
 
-              <button type="submit" className="booking-submit-button">
+              <button type="submit" className="booking-button">
                 Book Now
               </button>
             </form>

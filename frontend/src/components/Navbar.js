@@ -23,16 +23,16 @@ function Navbar() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const formattedQuery = searchQuery.toLowerCase();
-    
+
     // Map search queries to routes
     const routes = {
       goa: "/goa",
-      hampta: '/hamta',
-      himachal :'/himachal',
-      kerala:'/kerala',
-      ladakh:'/ladakh',
-      maharashtra:'/mh',
-      meghalaya:'/meghalaya'
+      hampta: "/hamta",
+      himachal: "/himachal",
+      kerala: "/kerala",
+      ladakh: "/ladakh",
+      maharashtra: "/mh",
+      meghalaya: "/meghalaya",
     };
 
     if (routes[formattedQuery]) {
@@ -48,7 +48,14 @@ function Navbar() {
     <nav className="navbar navbar-expand-sm">
       <div className="navbar-logo-container">
         <button className="logo-container">
-          <img onClick={()=>{navigate('/home')}} src={logo} alt="Logo" className="navbar-logo" />
+          <img
+            onClick={() => {
+              navigate("/home");
+            }}
+            src={logo}
+            alt="Logo"
+            className="navbar-logo"
+          />
         </button>
       </div>
       <div className="navbar-links-container">
