@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 import "./styles/info2.css";
-import {
-  FaRoute,
-  FaBinoculars,
-  FaGlobeAmericas,
-  FaMountain,
-} from "react-icons/fa";
+import { FaRoute, FaBinoculars, FaGlobeAmericas, FaMountain } from "react-icons/fa";
 
 function Info2() {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS
+  }, []);
+
   return (
     <div className="info2-container">
-      <h1 style={{ textAlign: "center", color: "orange" }}>
-        Unforgettable Trekking Adventures
-      </h1>
-      <p className="info2-p">
+      <h1 style={{ textAlign: "center", color: "orange" }} data-aos="fade-up">Unforgettable Trekking Adventures</h1>
+      <p className="info2-p" data-aos="fade-up" data-aos-delay="100">
         Discover some of the most thrilling and breathtaking trekking adventures
         in India. These treks offer not only a physical challenge but also an
         opportunity to experience the incredible beauty of the Himalayas.
       </p>
 
       <div className="info2-sections">
-        <div className="info2-section">
+        <div className="info2-section" data-aos="fade-up" data-aos-delay="200">
           <FaRoute className="info2-icon" />
           <h2>Hamta Pass, Himachal Pradesh</h2>
           <p>
@@ -31,7 +30,7 @@ function Info2() {
             views of the Pir Panjal Range.
           </p>
         </div>
-        <div className="info2-section">
+        <div className="info2-section" data-aos="fade-up" data-aos-delay="300">
           <FaBinoculars className="info2-icon" />
           <h2>Triund Trek, Himachal Pradesh</h2>
           <p>
@@ -42,7 +41,7 @@ function Info2() {
             below.
           </p>
         </div>
-        <div className="info2-section">
+        <div className="info2-section" data-aos="fade-up" data-aos-delay="400">
           <FaGlobeAmericas className="info2-icon" />
           <h2>Kasol-Sar Pass, Himachal Pradesh</h2>
           <p>
@@ -53,7 +52,7 @@ function Info2() {
             for those seeking a challenging and scenic journey.
           </p>
         </div>
-        <div className="info2-section">
+        <div className="info2-section" data-aos="fade-up" data-aos-delay="500">
           <FaMountain className="info2-icon" />
           <h2>Bhrigu Lake, Himachal Pradesh</h2>
           <p>
