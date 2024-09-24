@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser,Profile,Booking
+from .models import CustomUser,Profile,Booking,Review
 from django.contrib.auth import authenticate
 
 
@@ -66,3 +66,7 @@ class BookingSerializer(serializers.ModelSerializer):
             'emergency_contact_phone': {'required': True},
         }
         
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['id', 'name', 'review', 'rating', 'created_at']

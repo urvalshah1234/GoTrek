@@ -41,7 +41,7 @@ function RegisterForm() {
         // Store the email in localStorage
         localStorage.setItem("registeredEmail", gmail);
         alert(response.data.message);
-        navigate("/login");
+        navigate("/verify");
       } else {
         alert("Sign up failed: " + response.data.message);
       }

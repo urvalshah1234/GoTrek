@@ -6,6 +6,7 @@ import "../styles/Booking.css";
 
 function Booking() {
   const [bookings, setBookings] = useState([]);
+  const [paidBookings, setPaidBookings] = useState(new Set()); // Track paid bookings
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -26,7 +27,6 @@ function Booking() {
     if (confirmDelete) {
       try {
         await axios.delete(`http://localhost:8000/delete-booking/${bookingId}/`);
-        // After deletion, filter out the deleted booking from the state
         setBookings(bookings.filter((booking) => booking.id !== bookingId));
         alert("Booking deleted successfully.");
       } catch (error) {
@@ -37,10 +37,64 @@ function Booking() {
     }
   };
 
-  const handlePayNow = (bookingId) => {
-    // Redirect to the payment page or handle payment logic here
-    alert(`Initiating payment for booking ID: ${bookingId}`);
-  };
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/user-details?user_id=USER_ID'); // Replace USER_ID with the actual user ID
+        setUserDetails(response.data);
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+  
+    fetchUserDetails();
+  }, []);
+  
+
+  const handlePayNow = async (booking) => {
+    const confirmPay = window.confirm(`Do you want to proceed with payment for ${booking.trek} in ${booking.state}?`);
+
+    if (confirmPay) {
+        try {
+            const response = await axios.post(`http://localhost:8000/create-order/`, {
+                bookingId: booking.id,
+            });
+
+            const { orderId, amount } = response.data;
+
+            const options = {
+                key: "rzp_test_FQzlH7whPNyTpw", // Your Razorpay key
+                amount: amount,
+                currency: "INR",
+                name: "GoTrek",
+                description: `Payment for ${booking.trek} in ${booking.state}`,
+                order_id: orderId,
+                handler: function (response) {
+                    alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+                    setPaidBookings(prev => new Set(prev).add(booking.id));
+                },
+                prefill: {
+                  name: userDetails.full_name || "Urval shah", // Use fetched user details
+                  email: userDetails.email || "urvalshah1234@gmail.com",
+                  contact: userDetails.phone_number || "7043643600",
+                },
+                notes: {
+                    address: "Customer Address",
+                },
+                theme: {
+                    color: "#F37254",
+                },
+            };
+
+            const razorpay = new window.Razorpay(options);
+            razorpay.open();
+        } catch (error) {
+            console.error("Error initiating payment:", error);
+        }
+    }
+};
 
   return (
     <>
@@ -65,18 +119,20 @@ function Booking() {
                 <strong>Price:</strong> ₹{booking.price}
               </p>
               <p>
-                <strong>Trek Date:</strong>{" "}
-                {new Date(booking.trek_date).toLocaleDateString()}
+                <strong>Trek Date:</strong> {new Date(booking.trek_date).toLocaleDateString()}
               </p>
               <p>
                 <strong>Payment Method:</strong> {booking.payment_method}
               </p>
-              <button
-                className="pay-now-button"
-                onClick={() => handlePayNow(booking.id)}
-              >
-                Pay Now
-              </button>
+              {/* Conditionally render Pay Now button */}
+              {!paidBookings.has(booking.id) && (
+                <button
+                  className="pay-now-button"
+                  onClick={() => handlePayNow(booking)}
+                >
+                  Pay Now
+                </button>
+              )}
               <button
                 className="delete-button"
                 onClick={() => handleDelete(booking.id)}

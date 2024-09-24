@@ -49,7 +49,7 @@ function Verify2() {
         { email, otp }
       );
       console.log("Verification response:", response.data);
-      navigate("/home");
+      navigate("/register");
     } catch (error) {
       alert("Verification failed: " + error.response.data.message);
     }

@@ -20,4 +20,9 @@ urlpatterns = [
     path('fetch-news/', views.fetch_news, name='fetch_news'),
     path('fetch-weather/', views.fetch_weather, name='fetch_weather'),
 
+    path('reviews/', views.review_list_create, name='review-list-create'),
+
+    path('create-order/', views.create_order, name='create-order'),
+    path('user-details/', views.user_details, name='user-details'),  # For fetching user details
+
 ]

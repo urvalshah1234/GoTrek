@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import CustomUser, OTP, Profile, Booking
+from .models import CustomUser, OTP, Profile, Booking, Review
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 class CustomUserAdmin(BaseUserAdmin):
@@ -50,3 +50,10 @@ class BookingAdmin(admin.ModelAdmin):
     search_fields = ('state', 'trek','email')
     list_filter = ('trek_date', 'payment_method','email')
     readonly_fields = ('trek_date',)
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'review','created_at')  # Display these fields in the list view
+    search_fields = ('name', 'review')  # Enable search by name and review content
+    list_filter = ('rating', 'created_at')
+

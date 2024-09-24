@@ -172,3 +172,58 @@ def fetch_weather(request):
         return Response(data)
     else:
         return Response({"error": "City parameter is required."}, status=400)
+    
+from .models import Review
+from .serializers import ReviewSerializer
+
+@api_view(['GET', 'POST'])
+def review_list_create(request):
+    # Handle GET request: list all reviews
+    if request.method == 'GET':
+        reviews = Review.objects.all().order_by('-created_at')  # Order by latest
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    # Handle POST request: create a new review
+    elif request.method == 'POST':
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+import razorpay
+
+# Initialize Razorpay client
+client = razorpay.Client(auth=("rzp_test_FQzlH7whPNyTpw", "f29JKfYy9ByV8IPB3RhdbnxN"))
+
+@api_view(['POST'])
+def create_order(request):
+    booking_id = request.data.get('bookingId')
+
+    # Fetch the booking details (price, etc.) from the database based on booking_id
+    booking = Booking.objects.get(id=booking_id)  # Assuming Booking is your model name
+    amount = int(booking.price) * 100  # Amount in paise (for example: ₹500 is 50000 paise)
+    currency = 'INR'
+
+    try:
+        # Create an order
+        order = client.order.create({'amount': amount, 'currency': currency, 'receipt': str(booking_id)})
+        return Response({'orderId': order['id'], 'amount': amount}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def user_details(request):
+    # Assuming you are fetching user details based on some parameter, for example, user ID
+    user_id = request.query_params.get('user_id')  # Get user ID from query params
+
+    try:
+        user = CustomUser.objects.get(id=user_id)  # Get user from the database
+        return Response({
+            'full_name': user.full_name,
+            'email': user.email,
+            'phone_number': user.phone_number,
+        }, status=status.HTTP_200_OK)
+    except CustomUser.DoesNotExist:
+        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)

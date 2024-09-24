@@ -57,7 +57,7 @@ function Verify() {
         { email, otp }
       );
       console.log("Verification response:", response.data);
-      navigate("/home");
+      navigate("/login");
     } catch (error) {
       alert("Verification failed: " + error.response.data.message);
     }
