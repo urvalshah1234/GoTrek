@@ -119,48 +119,7 @@ function Hamta() {
     },
   ];
 
-  const [name, setName] = useState('');
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState('5');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    setIsSubmitting(true); // Set a flag to indicate submission in progress
-
-    const reviewData = {
-      name,
-      review,
-      rating: parseInt(rating),
-    };
-
-    try {
-      const response = await fetch('http://localhost:8000/reviews/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reviewData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit review');
-      }
-
-      const data = await response.json();
-      alert('Review submitted sccessfully')
-      console.log('Review submitted successfully:', data);
-
-      // Reset form after successful submission
-      setName('');
-      setReview('');
-      setRating('5');
-    } catch (error) {
-      console.error('Error:', error);
-    } finally {
-      setIsSubmitting(false); // Reset the submitting flag
-    }
-  };
+  
   return (
     <div className="layout-container">
       <Navbar />
@@ -344,7 +303,10 @@ function Hamta() {
         </div>
       </div>
       <section className="gallery-section">
-        <div className="Photos">
+        <h2 style={{ color: "#b8490e", textAlign: "center" }}>
+          Breathtaking views
+        </h2>
+        <div className="gallery-photos">
           <img src={coorg} alt="coorg" />
           <img src={rajmachi} alt="view" />
           <img src={triund} alt="view" />
@@ -419,93 +381,8 @@ function Hamta() {
           ></iframe>
         </div>
       </div>
+      
       <br />
-      <div
-      style={{
-        padding: '20px',
-        maxWidth: '600px',
-        margin: 'auto',
-        backgroundColor: '#f9f9f9',
-        borderRadius: '10px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <h2 style={{ textAlign: 'center', color: '#333' }}>Leave a Review</h2>
-
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}
-      >
-        <label style={{ color: '#555', fontSize: '16px' }}>Your Name</label>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          style={{
-            padding: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ddd',
-            fontSize: '14px',
-          }}
-        />
-
-        <label style={{ color: '#555', fontSize: '16px' }}>Your Review</label>
-        <textarea
-          placeholder="Write your review here"
-          rows="5"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-          required
-          style={{
-            padding: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ddd',
-            fontSize: '14px',
-            resize: 'none',
-          }}
-        />
-
-        <label style={{ color: '#555', fontSize: '16px' }}>Rating</label>
-        <select
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-          required
-          style={{
-            padding: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ddd',
-            fontSize: '14px',
-          }}
-        >
-          <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
-          <option value="4">⭐⭐⭐⭐ - Good</option>
-          <option value="3">⭐⭐⭐ - Average</option>
-          <option value="2">⭐⭐ - Poor</option>
-          <option value="1">⭐ - Terrible</option>
-        </select>
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          style={{
-            padding: '12px',
-            backgroundColor: '#b8490e',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            fontSize: '16px',
-            cursor: isSubmitting ? 'not-allowed' : 'pointer',
-            transition: 'background-color 0.3s',
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#f65f0e')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#b8490e')}
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit Review'}
-        </button>
-      </form>
-    </div><br />
       <Footer />
     </div>
   );

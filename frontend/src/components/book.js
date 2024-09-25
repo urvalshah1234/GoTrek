@@ -293,8 +293,8 @@ function BookNow() {
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
                   <option value="">Select a payment method</option>
-                  <option value="cash">Cash</option>
                   <option value="debit_card">Debit Card</option>
+                  <option value="netbanking">Netbanking</option>
                   <option value="upi">UPI</option>
                 </select>
               </div>

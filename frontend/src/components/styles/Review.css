@@ -1,0 +1,90 @@
+  /* Review Form Container */
+  .review_us-form-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Title */
+  .review_us-form-title {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  .review_us-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .review_us-form label {
+    color: #555;
+    font-size: 16px;
+  }
+  
+  /* Input and Textarea Styles */
+  .review_us-input,
+  .review_us-textarea,
+  .review_us-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .review_us-textarea {
+    resize: none;
+  }
+  
+  /* Button Styling */
+  .review_us-submit-btn {
+    padding: 12px;
+    background-color: #b8490e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .review_us-submit-btn:hover {
+    background-color: #f65f0e;
+  }
+  
+  .review_us-submit-btn:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+  }
+  
+  /* Navbar and Footer */
+  .review_us-navbar,
+  .review_us-footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .review_us-form-container {
+      width: 90%;
+    }
+  
+    .review_us-form-title {
+      font-size: 20px;
+    }
+  
+    .review_us-submit-btn {
+      font-size: 14px;
+    }
+  }
+  

@@ -26,7 +26,7 @@ function Gallery() {
         {/* Photos Section */}
         <section className="gallery-section">
           <h2 style={{ color: "#b8490e", textAlign: "center" }}>Photos</h2>
-          <div className="photos">
+          <div className="gallery-photos">
             <img src={coorg} alt="coorg" />
             <img src={rajmachi} alt="view" />
             <img src={triund} alt="view" />

@@ -83,26 +83,6 @@ function Footer() {
           </p>
         </div>
         <div className="footer-section">
-          <h5 className="footer-heading">Creations</h5>
-          <ul className="footer-list">
-            <li>
-              <a onClick={() => navigate("/photo")} className="footer-link">
-                Photos
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/photo")} className="footer-link">
-                Videos
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/photo")} className="footer-link">
-                Blogs
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-section">
           <h5 className="footer-heading">Quick Links</h5>
           <ul className="footer-list">
             <li>
@@ -148,6 +128,16 @@ function Footer() {
             <li>
               <a onClick={() => navigate("/packing")} className="footer-link">
                 Packing Checklist
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/gallery")} className="footer-link">
+                Gallery
+              </a>
+            </li>
+            <li>
+              <a onClick={() => navigate("/review")} className="footer-link">
+                Review us
               </a>
             </li>
           </ul>

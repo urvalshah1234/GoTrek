@@ -27,6 +27,7 @@ import Booking from "../components/pages/bookings";
 import News from "../components/pages/News";
 import Weather from "../components/pages/Weather";
 import Packing from "../components/pages/Packing";
+import Review from "../components/pages/Review";
 
 function AppRoutes() {
   return (
@@ -58,6 +59,7 @@ function AppRoutes() {
       <Route path='/news' element={<News/>}/>
       <Route path='/packing' element={<Packing/>}/>
       <Route path='/weather' element={<Weather/>}/>
+      <Route path='/review' element={<Review/>}/>
     </Routes>
   );
 }

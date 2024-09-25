@@ -6,6 +6,7 @@ import { FaHome, FaInfoCircle, FaBars, FaSearch } from "react-icons/fa";
 import { FaMountainSun } from "react-icons/fa6";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { IoMdContact } from "react-icons/io";
+import { IoIosLogOut } from "react-icons/io";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,6 @@ function Navbar() {
     e.preventDefault();
     const formattedQuery = searchQuery.toLowerCase();
 
-    // Map search queries to routes
     const routes = {
       goa: "/goa",
       hampta: "/hamta",
@@ -42,6 +42,13 @@ function Navbar() {
     }
 
     setSearchQuery(""); // Clear search input after submission
+  };
+
+  const handleLogout = () => {
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      navigate("/register"); // Navigate to the register page if user confirms
+    }
   };
 
   return (
@@ -93,11 +100,11 @@ function Navbar() {
               <button
                 className="navbar-tag-button"
                 onClick={() => {
-                  navigate("/activity");
+                  navigate("/weather");
                   setIsOpen(false);
                 }}
               >
-                Activity <FaMountainSun />
+                Weather <FaMountainSun />
               </button>
             </li>
             <li className="nav-item">
@@ -120,6 +127,14 @@ function Navbar() {
                 }}
               >
                 About Us <FaInfoCircle />
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className="navbar-tag-button"
+                onClick={handleLogout} // Add logout handler here
+              >
+                Logout <IoIosLogOut />
               </button>
             </li>
           </ul>
