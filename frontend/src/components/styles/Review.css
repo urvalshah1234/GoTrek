@@ -55,7 +55,9 @@
   }
   
   .review_us-submit-btn:hover {
+    letter-spacing: 0.05em;
     background-color: #f65f0e;
+    box-shadow: 0 0 10px #b8490e;
   }
   
   .review_us-submit-btn:disabled {
@@ -87,4 +89,3 @@
       font-size: 14px;
     }
   }
-  

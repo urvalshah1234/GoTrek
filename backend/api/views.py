@@ -113,7 +113,7 @@ def create_booking(request):
 
 @api_view(['GET'])
 def list_bookings(request):
-    bookings = Booking.objects.all().values('id', 'state', 'trek', 'price', 'trek_date', 'payment_method')
+    bookings = Booking.objects.all().values('id', 'state','email', 'trek', 'price', 'trek_date', 'payment_method')
     return Response(bookings, status=status.HTTP_200_OK)
 
 # Delete Booking View
@@ -191,7 +191,7 @@ def review_list_create(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
 import razorpay
 
 # Initialize Razorpay client
@@ -227,3 +227,45 @@ def user_details(request):
         }, status=status.HTTP_200_OK)
     except CustomUser.DoesNotExist:
         return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['POST'])
+def get_packing_list(request):
+    difficulty = request.data.get('difficulty')
+    weather = request.data.get('weather')
+    duration = request.data.get('duration')
+
+    packing_list = []
+
+    # Base Packing List (common items)
+    packing_list.extend(["Backpack", "Water Bottle", "First Aid Kit", "Flashlight", "Map and Compass", "Sunscreen"])
+
+    # Packing list based on difficulty
+    if difficulty == "easy":
+        packing_list.extend(["Snacks (Energy Bars, Dried Fruit)", "Trekking Shoes", "Hat or Cap"])
+    elif difficulty == "moderate":
+        packing_list.extend(["Trekking Shoes", "Hiking Poles", "Multi-tool or Knife", "Insect Repellent"])
+    elif difficulty == "hard":
+        packing_list.extend(["Rain Jacket", "Emergency Blanket", "Trekking Shoes", "Multi-tool or Knife", "Survival Gear"])
+
+    # Packing list based on weather
+    if weather == "sunny":
+        packing_list.extend(["Sunglasses", "Hat or Cap", "Light Clothing", "Sunscreen"])
+    elif weather == "rainy":
+        packing_list.extend(["Rain Jacket", "Waterproof Bag", "Extra Dry Clothes"])
+    elif weather == "snowy":
+        packing_list.extend(["Thermal Clothing", "Gloves", "Insulated Jacket", "Snow Boots", "Hand Warmers"])
+
+    # Packing list based on duration
+    if duration == "short":
+        packing_list.extend(["Snacks", "Personal Identification"])
+    elif duration == "medium":
+        packing_list.extend(["Food Supplies", "Portable Charger", "Extra Water"])
+    elif duration == "long":
+        packing_list.extend(["Extra Clothing", "Tent", "Sleeping Bag", "Cooking Supplies", "Power Bank"])
+
+    # Remove duplicate items
+    packing_list = list(set(packing_list))
+
+    return Response({'packing_list': packing_list})

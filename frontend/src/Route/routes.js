@@ -28,7 +28,7 @@ import News from "../components/pages/News";
 import Weather from "../components/pages/Weather";
 import Packing from "../components/pages/Packing";
 import Review from "../components/pages/Review";
-
+import Chatbot from "../components/pages/chatbot";
 function AppRoutes() {
   return (
     <Routes>
@@ -60,6 +60,7 @@ function AppRoutes() {
       <Route path='/packing' element={<Packing/>}/>
       <Route path='/weather' element={<Weather/>}/>
       <Route path='/review' element={<Review/>}/>
+      <Route path='/Chatbot' element={<Chatbot/>}/>
     </Routes>
   );
 }

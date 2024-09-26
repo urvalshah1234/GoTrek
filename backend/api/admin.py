@@ -53,7 +53,7 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('name', 'rating', 'review','created_at')  # Display these fields in the list view
-    search_fields = ('name', 'review')  # Enable search by name and review content
+    list_display = ('name', 'rating', 'review','created_at')  
+    search_fields = ('name', 'review')  
     list_filter = ('rating', 'created_at')
 

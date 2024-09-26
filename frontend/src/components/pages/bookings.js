@@ -7,7 +7,6 @@ import "../styles/Booking.css";
 function Booking() {
   const [bookings, setBookings] = useState([]);
   const [paidBookings, setPaidBookings] = useState(new Set()); // Track paid bookings
-
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -37,22 +36,6 @@ function Booking() {
     }
   };
 
-  const [userDetails, setUserDetails] = useState({});
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/user-details?user_id=USER_ID'); // Replace USER_ID with the actual user ID
-        setUserDetails(response.data);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-  
-    fetchUserDetails();
-  }, []);
-  
-
   const handlePayNow = async (booking) => {
     const confirmPay = window.confirm(`Do you want to proceed with payment for ${booking.trek} in ${booking.state}?`);
 
@@ -76,9 +59,9 @@ function Booking() {
                     setPaidBookings(prev => new Set(prev).add(booking.id));
                 },
                 prefill: {
-                  name: userDetails.full_name || "Urval shah", // Use fetched user details
-                  email: userDetails.email || "urvalshah1234@gmail.com",
-                  contact: userDetails.phone_number || "7043643600",
+                  name:  "Urval shah",
+                  email: "urvalshah1234@gmail.com",
+                  contact: "7043643600",
                 },
                 notes: {
                     address: "Customer Address",

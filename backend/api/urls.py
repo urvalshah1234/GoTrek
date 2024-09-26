@@ -25,4 +25,7 @@ urlpatterns = [
     path('create-order/', views.create_order, name='create-order'),
     path('user-details/', views.user_details, name='user-details'),  # For fetching user details
 
+    path('packing-list/', views.get_packing_list, name='get_packing_list'),
+    
+
 ]

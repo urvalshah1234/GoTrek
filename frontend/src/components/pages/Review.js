@@ -5,9 +5,9 @@ import "../styles/Review.css";
 import React from "react";
 
 function Review() {
-//   useEffect(() => {
-//     window.scrollTo(0, 0); // Scroll to the top when the component is mounted
-//   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
 
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
