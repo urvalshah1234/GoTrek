@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../styles/Packing.css"; // Adjust this CSS file as needed
@@ -7,6 +7,7 @@ const Packing = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component is mounted
   }, []);
+  
   const [items] = useState([
     { id: 1, name: "Backpack" },
     { id: 2, name: "Water Bottle" },
@@ -29,6 +30,7 @@ const Packing = () => {
     { id: 19, name: "Camera or Smartphone" },
     { id: 20, name: "Notebook and Pen" },
   ]);
+
   const [difficulty, setDifficulty] = useState('');
   const [weather, setWeather] = useState('');
   const [duration, setDuration] = useState('');
@@ -57,76 +59,81 @@ const Packing = () => {
         setIsLoading(false); // Stop loading even if there's an error
       });
   };
+
   return (
     <>
       <Navbar />
-      <br/>
-      <br/>
-      <br/>
-      <div style={{background: 'rgb(243, 202, 149)'}}>
-        <br/>
-      <div className="packlist-container">
-  <h1 className="packlist-title">Get Your Personalized Packing List</h1>
-  
-  {/* Trek Details Form */}
-  <form onSubmit={handleFormSubmit} className="packlist-form">
-    <label className="packlist-label">Difficulty:</label>
-    <select
-      value={difficulty}
-      onChange={(e) => setDifficulty(e.target.value)}
-      className="packlist-select"
-    >
-      <option value="">Select Difficulty</option>
-      <option value="easy">Easy</option>
-      <option value="moderate">Moderate</option>
-      <option value="hard">Hard</option>
-    </select>
+      <br />
+      <br />
+      <br />
+      <div className="dashboard-banner">
+        <h1 className="dashboard-title">Packing Checklist</h1>
+      </div>
+      <div className="packing-container">
+        <div className="packing-left">
+          <div className="packlist-container">
+            <h1 className="packlist-title">Get Your Personalized Packing List</h1>
 
-    <label className="packlist-label">Weather:</label>
-    <select
-      value={weather}
-      onChange={(e) => setWeather(e.target.value)}
-      className="packlist-select"
-    >
-      <option value="">Select Weather</option>
-      <option value="sunny">Sunny</option>
-      <option value="rainy">Rainy</option>
-      <option value="snowy">Snowy</option>
-    </select>
+            {/* Trek Details Form */}
+            <form onSubmit={handleFormSubmit} className="packlist-form">
+              <label className="packlist-label">Difficulty:</label>
+              <select
+                value={difficulty}
+                onChange={(e) => setDifficulty(e.target.value)}
+                className="packlist-select"
+              >
+                <option value="">Select Difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="hard">Hard</option>
+              </select>
 
-    <label className="packlist-label">Duration:</label>
-    <select
-      value={duration}
-      onChange={(e) => setDuration(e.target.value)}
-      className="packlist-select"
-    >
-      <option value="">Select Duration</option>
-      <option value="short">Short</option>
-      <option value="medium">Medium</option>
-      <option value="long">Long</option>
-    </select>
+              <label className="packlist-label">Weather:</label>
+              <select
+                value={weather}
+                onChange={(e) => setWeather(e.target.value)}
+                className="packlist-select"
+              >
+                <option value="">Select Weather</option>
+                <option value="sunny">Sunny</option>
+                <option value="rainy">Rainy</option>
+                <option value="snowy">Snowy</option>
+              </select>
 
-    <button type="submit" className="packlist-button">Get Packing List</button>
-  </form>
+              <label className="packlist-label">Duration:</label>
+              <select
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                className="packlist-select"
+              >
+                <option value="">Select Duration</option>
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+              </select>
 
-  {/* Loading indicator */}
-  {isLoading && <p className="packlist-loading">Loading packing list...</p>}
+              <button type="submit" className="packlist-button">Get Packing List</button>
+            </form>
 
-  {/* Packing List Display */}
-  {!isLoading && packingList.length > 0 && (
-    <div className="packlist-result">
-      <h2 className="packlist-result-title">Packing List:</h2>
-      <ul className="packlist-items">
-        {packingList.map((item, index) => (
-          <li key={index} className="packlist-item">{item}</li>
-        ))}
-      </ul>
-    </div>
-  )}
-</div>
-</div>
-<div className="packing-layout-container">
-        <div className="packing-card">
+            {/* Loading indicator */}
+            {isLoading && <p className="packlist-loading">Loading packing list...</p>}
+
+            {/* Packing List Display */}
+            {!isLoading && packingList.length > 0 && (
+              <div className="packlist-result">
+                <h2 className="packlist-result-title">Packing List:</h2>
+                <ul className="packlist-items">
+                  {packingList.map((item, index) => (
+                    <li key={index} className="packlist-item">{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right Section: General Packing Checklist */}
+        <div className="packing-right">
           <h1>General Packing Checklist</h1>
           <ul>
             {items.map((item) => (
@@ -137,7 +144,6 @@ const Packing = () => {
             ))}
           </ul>
         </div>
-      
       </div>
       <Footer />
     </>

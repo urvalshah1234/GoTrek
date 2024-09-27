@@ -7,82 +7,74 @@ import {
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa";
-import "./styles/Footer.css"; // Assuming you'll style it in this file
+import "./styles/Footer.css";
+import logo from './assets/logo.jpg'
 
 function Footer() {
   const navigate = useNavigate();
 
   return (
     <div className="footer">
-      {/* Social Media Icons Section */}
-      <div className="social-media-icons">
-        <a
-          className="sinsta"
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram />
-        </a>
-        /
-        <a
-          className="sfacebook"
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebookF />
-        </a>
-        /
-        <a
-          className="stwitter"
-          href="https://www.twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTwitter />
-        </a>
-        /
-        <a
-          className="swhatsapp"
-          href="https://www.whatsapp.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaWhatsapp />
-        </a>
-        /
-        <a
-          className="syoutube"
-          href="https://www.youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaYoutube />
-        </a>
+      <div className="footer-left">
+        {/* Logo Section */}
+        <div className="footer-logo-section">
+          <img src={logo} alt="Trekking Logo" className="footer-logo" />
+          <h4 className="footer-title">GoTrek</h4>
+          <p className="footer-subtitle">Explore the world with us</p>
+        </div>
+
+        {/* Social Media Icons Section */}
+        <div className="footer-social-icons">
+          <a
+            className="footer-sinsta"
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram />
+          </a>
+          /
+          <a
+            className="footer-sfacebook"
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF />
+          </a>
+          /
+          <a
+            className="footer-stwitter"
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter />
+          </a>
+          /
+          <a
+            className="footer-swhatsapp"
+            href="https://www.whatsapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaWhatsapp />
+          </a>
+          /
+          <a
+            className="footer-syoutube"
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube />
+          </a>
+        </div>
       </div>
 
-      {/* Footer Sections */}
-      <div className="footer-content">
-        <div className="footer-section">
-          <h5 className="footer-heading">Terms and Conditions</h5>
-          <p>
-            By using this website and booking our trekking services, you agree
-            to our{" "}
-            <span>
-              <a
-                onClick={() => navigate("/tnc")}
-                style={{ textDecoration: "underline", color: "blue" }}
-              >
-                Terms and Conditions.
-              </a>
-            </span>{" "}
-            Please ensure you read and understand our policies on bookings,
-            cancellations, safety guidelines, and liability. Your safety and
-            satisfaction are our priority.
-          </p>
-        </div>
-        <div className="footer-section">
+      {/* Right Section */}
+      <div className="footer-right">
+      <div className="footer-section">
           <h5 className="footer-heading">Quick Links</h5>
           <ul className="footer-list">
             <li>
@@ -96,8 +88,8 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a onClick={() => navigate("/activity")} className="footer-link">
-                Activity
+              <a onClick={() => navigate("/review")} className="footer-link">
+                Review us
               </a>
             </li>
             <li>
@@ -112,37 +104,6 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="footer-section">
-          <h5 className="footer-heading">Additional Features</h5>
-          <ul className="footer-list">
-            <li>
-              <a onClick={() => navigate("/news")} className="footer-link">
-                News
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/weather")} className="footer-link">
-                Weather
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/packing")} className="footer-link">
-                Packing Checklist
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/gallery")} className="footer-link">
-                Gallery
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/review")} className="footer-link">
-                Review us
-              </a>
-            </li>
-          </ul>
-        </div>
-
         <div className="footer-section">
           <h5 className="footer-heading">Popular States</h5>
           <ul className="footer-list">
@@ -168,23 +129,37 @@ function Footer() {
             </li>
           </ul>
         </div>
-      </div>
-
-      <div className="footer-contact">
-        <h4 className="footer-heading">Contact</h4>
-        <address className="footer-address">
-          <strong>Ahmedabad (Head Office)</strong>
-          <br />
-          308, University Plaza, Above Chocolate Room,
-          <br />
-          Vijay Cross Roads, Navrangpura,
-          <br />
-          Ahmedabad, Gujarat 380009
-          <br />
-          Office Timings: 10AM to 9PM
-          <br />
-          Contact Number: 9999999999
-        </address>
+        <div className="footer-section">
+          <h5 className="footer-heading">Contact</h5>
+          <address className="footer-address">
+            <strong>Ahmedabad (Head Office)</strong>
+            <br />
+            308, University Plaza, Above Chocolate Room,
+            <br />
+            Vijay Cross Roads, Navrangpura,
+            <br />
+            Ahmedabad, Gujarat 380009
+            <br />
+            Office Timings: 10AM to 9PM
+            <br />
+            Contact Number: 9999999999
+          </address>
+        </div>
+        <div className="footer-section">
+          <h5 className="footer-heading">Terms and Conditions</h5>
+          <p>
+            By using this website and booking our trekking services, you agree
+            to our{" "}
+            <span>
+              <a
+                onClick={() => navigate("/tnc")}
+                style={{ textDecoration: "underline", color: "blue" }}
+              >
+                Terms and Conditions.
+              </a>
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

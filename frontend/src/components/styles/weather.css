@@ -1,98 +1,110 @@
 .weather-layout-container {
-    padding: 5px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height */
+    height: auto; /* Auto height to accommodate content */
     margin: auto;
-    background: url('../assets/weather.jpeg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-.weather-card {
-    width: 500px;
+    background-color: #f4f7f6; /* Light background for contrast */
+  }
+  
+  .weather-card {
+    width: 500px; /* Slightly smaller width for a more compact look */
     height: auto;
     text-align: center;
     backdrop-filter: blur(20px) saturate(50%);
-    background-color: transparent;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    padding: 20px; /* Padding for the card */
-}
-
-.weather-form {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 15px;
+    border: none; /* Remove border */
+    padding: 30px 20px; /* Increased padding for better spacing */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
+  }
+  
+  .weather-form {
     display: flex;
     flex-direction: column;
-}
-
-.weather-input {
+    margin-bottom: 20px; /* Space below the form */
+  }
+  
+  .weather-input {
     padding: 15px;
-    border-radius: 50px;
+    border-radius: 30px;
     text-align: center;
-    border: none;
-    background: #e1ede4;
+    border: 2px solid #b8490e; /* Add a border for more structure */
+    background: #ffffff;
     font-size: 16px;
-    margin-bottom: 10px; /* Space between input and button */
-}
-
-.weather-input:focus {
+    margin-bottom: 12px; /* Space between input and button */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for input */
+  }
+  
+  .weather-input:focus {
     outline: none;
-}
-
-.weather-button {
-    border-radius: 50px;
-    font-size: 14px;
-    padding: 10px;
+    border-color: #f65f0e; /* Border color changes on focus */
+  }
+  
+  .weather-button {
+    border-radius: 30px;
+    font-size: 16px; /* Increased font size for better readability */
+    padding: 12px;
     color: white;
-    background: #b8490e;
+    background: #b8490e; /* Slightly lighter orange */
     border: none;
     font-weight: bold;
-    transition: background-color 0.3s;
-}
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow to button */
+  }
+  
+  .weather-button:hover {
 
-.weather-button:hover {
     letter-spacing: 0.05em;
     background-color: #f65f0e;
     box-shadow: 0 0 10px #b8490e;
-}
-
-.weather-button:focus {
-    outline: none;
-}
-
-.weather-button:active {
-    padding-top: 8px;
-}
-
-.weather-title {
-    color:  #b8490e;
-    margin: 10px 0; /* Space between title and other elements */
-    text-transform: uppercase; /* Capitalize city name */
-}
-
-.weather-details {
+  }
+  
+  .weather-button:active {
+    transform: translateY(2px); /* Button pressed effect */
+  }
+  
+  .weather-title {
+    color: #d14100; /* Stronger, more visible orange */
+    margin: 15px 0; /* Space between title and content */
+    text-transform: uppercase; /* Keeps city name capitalized */
+    font-size: 22px; /* Slightly larger title */
+    letter-spacing: 0.05em; /* Adds space between letters */
+  }
+  
+  .weather-details {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
-    gap: 15px; /* Space between sections */
-    margin-top: 20px; /* Space above details */
-}
-
-.weather-section {
-    background: rgba(255, 255, 255, 0.1); /* Light background for sections */
-    padding: 10px;
-    border-radius: 8px;
-    color:  black;
-}
-
-.weather-temp,
-.weather-description,
-.weather-humidity,
-.weather-wind-speed {
-    margin: 10px 0; /* Space between text elements */
-}
-
-.weather-error {
-    color:  #b8490e;
-    margin-top: 10px;
+    grid-template-columns: 1fr 1fr; /* Two columns layout */
+    gap: 20px; /* Increased gap for better spacing */
+    margin-top: 25px;
+  }
+  
+  .weather-section {
+    background: #ffffff; /* Solid white for contrast */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: transform 0.3s;
+  }
+  
+  .weather-section:hover {
+    transform: scale(1.05); /* Slight scale effect on hover */
+  }
+  
+  .weather-temp,
+  .weather-description,
+  .weather-humidity,
+  .weather-wind-speed {
+    font-size: 14px; /* Standardized font size */
+    margin: 5px 0; /* Space between text elements */
+    color:#f65f0e; /* Darker text for readability */
+  }
+  
+  .weather-error {
+    color: #d14100; /* Same orange as the title for consistency */
+    margin-top: 15px;
     font-weight: bold;
-}
+    font-size: 16px; /* Larger error text */
+  }
+  

@@ -11,6 +11,7 @@ import Trekking from "./Trekking";
 import People from "./people_love";
 import Weekend from "./Weekend";
 import Special from "./Special_event";
+import Additional from "./Additional";
 
 function Layout() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function Layout() {
         <Trekking />
         <Info2 />
         <Weekend />
+        <Additional/>
         <div data-aos="fade-up">
           <Special />
         </div>

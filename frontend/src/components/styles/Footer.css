@@ -1,85 +1,123 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box !important; 
-}
-
 .footer {
-    background-color: #333; /* Dark background */
-    color: #fff; /* White text */
-    padding: 20px;
-  }
-  
-  .social-media-icons {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
 }
-  
-  .social-media-icons a {
-    color: #fff;
-    margin: 0 10px;
-    font-size: 24px;
-    transition: color 0.3s;
-  }
-  
-  .social-media-icons a:hover {
-    color: blue; /* Lighten on hover */
-    &.sinsta:hover{color: rgb(247, 16, 54);}
-    &.sfacebook:hover{color: blue;}
-    &.syoutube:hover{color: rgb(248, 4, 4);}
-    &.stwitter:hover{color: rgba(8, 132, 227, 0.892);}
-    &.swhatsapp:hover{color: greenyellow;}
-  }
 
-  /* Flexbox to align footer sections horizontally */
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    gap: 20px; /* Space between sections */
-  }
-  
-  .footer-section {
-    flex: 1; /* Make all sections take equal space */
-    min-width: 200px; /* Ensure sections don’t get too narrow */
-    text-align: center;
-  }
-  
-  .footer-heading {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: rgb(203, 71, 23);
-    text-align: center;
-  }
-  
-  .footer-list {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .footer-list li {
-    margin-bottom: 5px;
-  }
-  
-  .footer-link {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .footer-link:hover {
-    color: #ccc; /* Lighten on hover */
-  }
-  
-  .footer-contact {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .footer-address {
-    font-size: 14px;
-  }
-  
+/* Left section */
+.footer-left {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;     /* Center content horizontally */
+  text-align: center;      /* Center text inside the column */
+}
+
+.footer-logo {
+  width: 100px;       /* Set width */
+  height: 100px;      /* Set height equal to width to make it a square */
+  border-radius: 50%; /* Make it a circle */
+  object-fit: cover;  /* Ensure the image fits within the circle */
+  margin-bottom: 10px; /* Space below the logo */
+}
+
+.footer-title {
+  font-size: 22px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.footer-subtitle {
+  font-size: 16px;
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.footer-social-icons a {
+  color: #fff; /* Default color for icons */
+  margin: 0 10px;
+  font-size: 24px;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Instagram hover effect */
+.footer-sinsta:hover {
+  color: #E1306C; /* Instagram's brand color */
+}
+
+/* Facebook hover effect */
+.footer-sfacebook:hover {
+  color: #1877F2; /* Facebook's brand blue */
+}
+
+/* Twitter hover effect */
+.footer-stwitter:hover {
+  color: #1DA1F2; /* Twitter's brand blue */
+}
+
+/* WhatsApp hover effect */
+.footer-swhatsapp:hover {
+  color: #25D366; /* WhatsApp's brand green */
+}
+
+/* YouTube hover effect */
+.footer-syoutube:hover {
+  color: #FF0000; /* YouTube's brand red */
+}
+
+/* Right section */
+.footer-right {
+  width: 80%;
+  display: flex;
+  justify-content: space-around; /* Distribute space equally around sections */
+  align-items: center; /* Align sections vertically in the center */
+  text-align: center; /* Center-align content within each section */
+  flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.footer-section {
+  flex: 1; /* All sections will take up equal space */
+  min-width: 150px; /* Set a minimum width for responsiveness */
+}
+
+.footer-heading {
+  font-size: 18px;
+  color: rgb(203, 71, 23);
+  margin-bottom: 10px;
+}
+
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-list li {
+  margin-bottom: 5px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #ccc;
+}
+
+.footer-address {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.footer-contact {
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Additional styling for spacing between sections */
+.footer-section:not(:last-child) {
+  margin-right: 20px; /* Add spacing between sections */
+}

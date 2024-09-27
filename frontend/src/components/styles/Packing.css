@@ -1,123 +1,133 @@
-.packing-layout-container {
-    background: rgb(243, 202, 149);
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    padding: 20px; /* Padding around the content */
+/* Overall Packing Container */
+.packing-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adds space between left and right sections */
+  padding: 20px;
+  background: rgb(243, 202, 149);
 }
 
-.packing-card {
-    background-color: rgba(255, 255, 255, 0.8); /* Light card background */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    width: 600px; /* Fixed width for the card */
+/* Left Section: Personalized Packing List */
+.packing-left {
+  flex: 1; /* Takes up equal space */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Right Section: General Packing Checklist */
+.packing-right {
+  flex: 1; /* Takes up equal space */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Light card background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* General Packing Checklist Title */
 .packing-card h1 {
-    text-align: center;
-    color: #b8490e;
-    margin-bottom: 20px; /* Space below the heading */
+  text-align: center;
+  color: #b8490e;
+  margin-bottom: 20px; /* Space below the heading */
 }
 
+/* Packing Items */
 .packing-item {
-    display: flex;
-    justify-content: space-between; /* Space between text and checkbox */
-    align-items: center;
-    margin: 10px 0; /* Space between items */
+  display: flex;
+  justify-content: space-between; /* Space between text and checkbox */
+  align-items: center;
+  margin: 10px 0; /* Space between items */
 }
 
 /* Container for the form and packing list */
 .packlist-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Title Styling */
-  .packlist-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Form Styling */
-  .packlist-form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-  }
-  
-  .packlist-label {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-  }
-  
-  .packlist-select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-  
-  /* Button Styling */
-  .packlist-button {
-    background-color:  #b8490e;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .packlist-button:hover {
-    letter-spacing: 0.05em;
-    background-color: #f65f0e;
-    box-shadow: 0 0 10px #b8490e;
-  }
-  
-  /* Loading Indicator Styling */
-  .packlist-loading {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  /* Packing List Result Styling */
-  .packlist-result {
-    margin-top: 30px;
-  }
-  
-  .packlist-result-title {
-    color: #333;
-    text-align: left;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .packlist-items {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .packlist-item {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-  }
-  
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Title Styling */
+.packlist-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.packlist-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.packlist-label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.packlist-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Button Styling */
+.packlist-button {
+  background-color: #b8490e;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.packlist-button:hover {
+  letter-spacing: 0.05em;
+  background-color: #f65f0e;
+  box-shadow: 0 0 10px #b8490e;
+}
+
+/* Loading Indicator Styling */
+.packlist-loading {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Packing List Result Styling */
+.packlist-result {
+  margin-top: 30px;
+}
+
+.packlist-result-title {
+  color: #333;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.packlist-items {
+  list-style: none;
+  padding-left: 0;
+}
+
+.packlist-item {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}

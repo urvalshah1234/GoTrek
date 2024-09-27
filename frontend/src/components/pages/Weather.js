@@ -32,6 +32,10 @@ function Weather() {
     <>
       <Navbar />
       <br/>
+      <br/>
+      <div className="dashboard-banner">
+          <h1 className="dashboard-title">Weather</h1>
+        </div>
       <div className="weather-layout-container">
         <div className="weather-card">
           <form onSubmit={handleSearch} className="weather-form">

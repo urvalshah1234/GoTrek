@@ -9,7 +9,6 @@ import RegisterForm from "../components/Register";
 import Verify from "../components/verify";
 import Verify2 from "../components/verify2";
 import Tnc from "../components/pages/Tnc";
-import Activity from "../components/pages/Activity";
 import Dashboard from "../components/pages/Dashboard";
 import Profile from "../components/pages/Profile";
 import Himachal from "../components/treks/himachal";
@@ -43,7 +42,6 @@ function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/profile" element={<Profile />}/>
       <Route path='/tnc' element={<Tnc />}/>
-      <Route path="/activity" element={<Activity />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/himachal" element={<Himachal />} />

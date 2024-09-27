@@ -3,7 +3,6 @@ import "./styles/Navbar.css";
 import logo from "./assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaInfoCircle, FaBars, FaSearch } from "react-icons/fa";
-import { FaMountainSun } from "react-icons/fa6";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { IoMdContact } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
@@ -94,17 +93,6 @@ function Navbar() {
                 }}
               >
                 Dashboard <LuLayoutDashboard />
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className="navbar-tag-button"
-                onClick={() => {
-                  navigate("/weather");
-                  setIsOpen(false);
-                }}
-              >
-                Weather <FaMountainSun />
               </button>
             </li>
             <li className="nav-item">

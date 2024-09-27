@@ -35,7 +35,9 @@ function News() {
             <br/>
             <br/>
             <br/>
-            <br/>
+            <div className="dashboard-banner">
+          <h1 className="dashboard-title">News</h1>
+        </div>
             <div className="news-container">
                 {loading && <p>Loading news...</p>}
                 {error && <p>{error}</p>}
