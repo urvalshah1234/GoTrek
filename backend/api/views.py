@@ -18,15 +18,31 @@ def signup(request):
         return JsonResponse({"message": "User created successfully!", "success": True}, status=201)
     return JsonResponse(serializer.errors, status=400)
 
+from django.contrib.auth import authenticate
+
 # User Login View
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
     serializer = LoginSerializer(data=request.data)
     if serializer.is_valid():
-        print(request.data)
-        return Response({"message": "Login successful", "success": True}, status=status.HTTP_200_OK)
+        username = serializer.validated_data['username']
+        password = serializer.validated_data['password']
+        
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            print(request.data)
+            return Response({
+                "message": "Login successful",
+                "success": True,
+                "email": user.email  # Include the user's email in the response
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({"message": "Invalid username or password"}, status=status.HTTP_400_BAD_REQUEST)
+    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # Send OTP View
 @api_view(['POST'])

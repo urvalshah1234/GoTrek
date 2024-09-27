@@ -7,8 +7,9 @@ import {
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa";
+import chatbot from './assets/chatbot.jpg'
 import "./styles/Footer.css";
-import logo from './assets/logo.jpg'
+import logo from "./assets/logo.jpg";
 
 function Footer() {
   const navigate = useNavigate();
@@ -70,11 +71,25 @@ function Footer() {
             <FaYoutube />
           </a>
         </div>
+
+        {/* Chatbot Icon Section */}
+        <div
+          className="footer-chatbot-section"
+          onClick={() => navigate("/chatbot")}
+          style={{ cursor: "pointer" }}
+        >
+          <img
+            src={chatbot}
+            alt="Chatbot"
+            className="footer-chatbot-image"
+          />
+          <p className="footer-chatbot-title">Chat with us</p>
+        </div>
       </div>
 
       {/* Right Section */}
       <div className="footer-right">
-      <div className="footer-section">
+        <div className="footer-section">
           <h5 className="footer-heading">Quick Links</h5>
           <ul className="footer-list">
             <li>

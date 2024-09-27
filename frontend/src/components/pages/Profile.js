@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -7,12 +6,14 @@ import "../styles/Layout.css";
 import "../styles/Profile.css";
 
 function Profile() {
+  // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Get the registered email from localStorage on component mount
   useEffect(() => {
-    const registeredEmail = localStorage.getItem("registeredEmail");
+    const registeredEmail = localStorage.getItem("loggedInEmail");
     if (registeredEmail) {
       setEmail(registeredEmail);
     }
@@ -20,11 +21,10 @@ function Profile() {
 
   const handleEmailChange = (value) => {
     setEmail(value);
-    localStorage.setItem("registeredEmail", value);
+    localStorage.setItem("loggedInEmail", value);
   };
 
-  const navigate = useNavigate();
-
+  // State variables for form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -36,6 +36,42 @@ function Profile() {
   const [bloodGroup, setBloodGroup] = useState("");
   const [address, setAddress] = useState("");
 
+  // Load saved form values from localStorage on component mount
+  useEffect(() => {
+    const savedProfile = JSON.parse(localStorage.getItem("profileData"));
+    if (savedProfile) {
+      setFirstName(savedProfile.firstName || "");
+      setLastName(savedProfile.lastName || "");
+      setBirthday(savedProfile.birthday || "");
+      setGender(savedProfile.gender || "");
+      setHeight(savedProfile.height || "");
+      setWeight(savedProfile.weight || "");
+      setContactNumber(savedProfile.contactNumber || "");
+      setEmail(savedProfile.email || "");
+      setBloodGroup(savedProfile.bloodGroup || "");
+      setAddress(savedProfile.address || "");
+    }
+  }, []);
+
+  // Save form values to localStorage on change
+  const saveToLocalStorage = (key, value) => {
+    const profileData = {
+      firstName,
+      lastName,
+      birthday,
+      gender,
+      height,
+      weight,
+      contactNumber,
+      email,
+      bloodGroup,
+      address,
+      [key]: value, // dynamically set the changed value
+    };
+    localStorage.setItem("profileData", JSON.stringify(profileData));
+  };
+
+  // Handle form submission to save data to the backend
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -59,7 +95,6 @@ function Profile() {
       );
       if (response.data.success) {
         alert("Profile saved successfully!");
-        navigate(`/update_profile?email=${email}`);
       } else {
         alert("Profile update failed: " + response.data.message);
       }
@@ -84,7 +119,10 @@ function Profile() {
               type="text"
               id="firstName"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+                saveToLocalStorage("firstName", e.target.value);
+              }}
               required
             />
           </div>
@@ -94,7 +132,10 @@ function Profile() {
               type="text"
               id="lastName"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => {
+                setLastName(e.target.value);
+                saveToLocalStorage("lastName", e.target.value);
+              }}
               required
             />
           </div>
@@ -115,7 +156,10 @@ function Profile() {
               type="date"
               id="birthday"
               value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
+              onChange={(e) => {
+                setBirthday(e.target.value);
+                saveToLocalStorage("birthday", e.target.value);
+              }}
               required
             />
           </div>
@@ -124,7 +168,10 @@ function Profile() {
             <select
               id="gender"
               value={gender}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {
+                setGender(e.target.value);
+                saveToLocalStorage("gender", e.target.value);
+              }}
               required
             >
               <option value="">Select Gender</option>
@@ -139,7 +186,10 @@ function Profile() {
               type="number"
               id="height"
               value={height}
-              onChange={(e) => setHeight(e.target.value)}
+              onChange={(e) => {
+                setHeight(e.target.value);
+                saveToLocalStorage("height", e.target.value);
+              }}
               required
             />
           </div>
@@ -149,7 +199,10 @@ function Profile() {
               type="number"
               id="weight"
               value={weight}
-              onChange={(e) => setWeight(e.target.value)}
+              onChange={(e) => {
+                setWeight(e.target.value);
+                saveToLocalStorage("weight", e.target.value);
+              }}
               required
             />
           </div>
@@ -159,7 +212,10 @@ function Profile() {
               type="tel"
               id="contactNumber"
               value={contactNumber}
-              onChange={(e) => setContactNumber(e.target.value)}
+              onChange={(e) => {
+                setContactNumber(e.target.value);
+                saveToLocalStorage("contactNumber", e.target.value);
+              }}
               required
             />
           </div>
@@ -169,7 +225,10 @@ function Profile() {
               type="text"
               id="bloodGroup"
               value={bloodGroup}
-              onChange={(e) => setBloodGroup(e.target.value)}
+              onChange={(e) => {
+                setBloodGroup(e.target.value);
+                saveToLocalStorage("bloodGroup", e.target.value);
+              }}
               required
             />
           </div>
@@ -178,7 +237,10 @@ function Profile() {
             <textarea
               id="address"
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={(e) => {
+                setAddress(e.target.value);
+                saveToLocalStorage("address", e.target.value);
+              }}
               required
             />
           </div>

@@ -46,6 +46,7 @@ function Navbar() {
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
+      localStorage.clear();
       navigate("/register"); // Navigate to the register page if user confirms
     }
   };

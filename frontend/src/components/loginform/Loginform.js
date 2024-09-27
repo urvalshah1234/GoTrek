@@ -17,18 +17,24 @@ function LoginForm() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:8000/login/', { // Replace with your actual backend endpoint
+      const response = await axios.post('http://localhost:8000/login/', {
         username,
         password,
       });
   
       // Handle successful login here
       console.log("Login successful:", response.data);
+  
+      // Store the email in localStorage
+      if (response.data.success) {
+        localStorage.clear();
+        localStorage.setItem("loggedInEmail", response.data.email);
+      }
+  
       navigate("/home");
     } catch (error) {
       // Handle errors here
@@ -36,7 +42,7 @@ function LoginForm() {
       alert("Login failed: " + error.response.data.message); // Show error message to the user
     }
   };
-
+  
   return (
     <div className="login-container">
       <div className="wrapper">

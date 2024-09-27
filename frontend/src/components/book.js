@@ -83,7 +83,7 @@ function BookNow() {
     setSelectedTrekPrice(trek ? trek.price : "");
   };
   useEffect(() => {
-    const registeredEmail = localStorage.getItem("registeredEmail");
+    const registeredEmail = localStorage.getItem("loggedInEmail");
     if (registeredEmail) {
       setEmail(registeredEmail);
     }
