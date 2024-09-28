@@ -29,10 +29,12 @@ function LoginForm() {
       // Handle successful login here
       console.log("Login successful:", response.data);
   
-      // Store the email in localStorage
+      // Store the email, username, and contact number in localStorage
       if (response.data.success) {
         localStorage.clear();
         localStorage.setItem("loggedInEmail", response.data.email);
+        localStorage.setItem("loggedInUsername", username); // Store username
+        localStorage.setItem("loggedInContactNumber", response.data.contactNumber); // Store contact number
       }
   
       navigate("/home");

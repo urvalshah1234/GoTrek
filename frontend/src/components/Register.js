@@ -17,12 +17,12 @@ function RegisterForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
+  
     const userData = {
       full_name: fullName,
       username: username,
@@ -31,15 +31,12 @@ function RegisterForm() {
       password: password,
       confirm_password: confirmPassword,
     };
-
+  
     try {
-      const response = await axios.post(
-        "http://localhost:8000/signup/",
-        userData
-      );
+      const response = await axios.post("http://localhost:8000/signup/", userData);
       if (response.data.success) {
-        // Store the email in localStorage
         localStorage.setItem("registeredEmail", gmail);
+        localStorage.setItem("registeredContactNumber", contactNumber); // Store contact number
         alert(response.data.message);
         navigate("/verify");
       } else {
@@ -50,7 +47,7 @@ function RegisterForm() {
       alert("There was an error during sign up!");
     }
   };
-
+  
   return (
     <div className="login-container">
       <div className="wrapper">

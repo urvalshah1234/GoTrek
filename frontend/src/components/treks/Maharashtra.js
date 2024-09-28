@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../styles/Layout.css";
-import harishchandragad from "../assets/harishchandragad.jpg";
 import kalsubai from "../assets/kalsubai.jpg";
 import rajmachi from "../assets/rajmachi.jpg";
 import "../styles/treks.css";

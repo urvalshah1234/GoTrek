@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
+import Sentiment from "sentiment";
 
 function People() {
   // Local reviews (static data)
@@ -29,7 +30,7 @@ function People() {
       rating: 4,
     },
     {
-      name: "Kanisha Shah",
+      name: "Khushi Shah",
       description:
         "Had an incredible time trekking with GoTrek. The guides were experienced and helpful, making the entire journey unforgettable.",
       rating: 5,
@@ -57,6 +58,13 @@ function People() {
     fetchReviews();
   }, []);
 
+  // Analyze sentiment for a given text
+  const analyzeSentiment = (text) => {
+    const sentiment = new Sentiment();
+    const result = sentiment.analyze(text);
+    return result.score; // Returns a score (positive, negative, or neutral)
+  };
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>
@@ -77,54 +85,68 @@ function People() {
         }}
       >
         {/* Static reviews */}
-        {staticReviews.map((review, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              width: "250px",
-              margin: "10px",
-              padding: "10px",
-              textAlign: "center",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "#f0f0f0",
-            }}
-          >
-            <h3 style={{ color: "#b8490e" }}>{review.name}</h3>
-            <p>{review.description}</p>
-            <div style={{ color: "gold", fontSize: "1.2em" }}>
-              {[...Array(review.rating)].map((_, i) => (
-                <FaStar key={i} />
-              ))}
+        {staticReviews.map((review, index) => {
+          const sentimentScore = analyzeSentiment(review.description);
+          return (
+            <div
+              key={index}
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "10px",
+                width: "250px",
+                margin: "10px",
+                padding: "10px",
+                textAlign: "center",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                backgroundColor: "#f0f0f0",
+              }}
+            >
+              <h3 style={{ color: "#b8490e" }}>{review.name}</h3>
+              <p>{review.description}</p>
+              <div style={{ color: "gold", fontSize: "1.2em" }}>
+                {[...Array(review.rating)].map((_, i) => (
+                  <FaStar key={i} />
+                ))}
+              </div>
+              <p style={{ fontWeight: "bold" ,color:'#b8490e'}}>
+                Sentiment Score: {sentimentScore}
+              </p>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Reviews fetched from the database */}
-        {dbReviews.map((review, index) => (
-          <div
-            key={index + staticReviews.length} // Ensure unique keys across both arrays
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              width: "250px",
-              margin: "10px",
-              padding: "10px",
-              textAlign: "center",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "#f0f0f0",
-            }}
-          >
-            <h3 style={{ color: "#b8490e", textTransform:'capitalize' }}>{review.name}</h3>
-            <p>{review.review}</p>
-            <div style={{ color: "gold", fontSize: "1.2em" }}>
-              {[...Array(review.rating)].map((_, i) => (
-                <FaStar key={i} />
-              ))}
+        {dbReviews.map((review, index) => {
+          const sentimentScore = analyzeSentiment(review.review);
+          return (
+            <div
+              key={index + staticReviews.length} // Ensure unique keys across both arrays
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "10px",
+                width: "250px",
+                margin: "10px",
+                padding: "10px",
+                textAlign: "center",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                backgroundColor: "#f0f0f0",
+              }}
+            >
+              <h3 style={{ color: "#b8490e", textTransform: "capitalize" }}>
+                {review.name}
+              </h3>
+              <p>{review.review}</p>
+              <div style={{ color: "gold", fontSize: "1.2em" }}>
+                {[...Array(review.rating)].map((_, i) => (
+                  <FaStar key={i} />
+                ))}
+              </div>
+              <p style={{ color: "#b8490e",fontWeight: "bold" }}>
+                Sentiment Score: {sentimentScore}
+              </p>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );

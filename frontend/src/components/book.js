@@ -83,15 +83,15 @@ function BookNow() {
     setSelectedTrekPrice(trek ? trek.price : "");
   };
   useEffect(() => {
-    const registeredEmail = localStorage.getItem("loggedInEmail");
-    if (registeredEmail) {
-      setEmail(registeredEmail);
+    const loginEmail = localStorage.getItem("loggedInEmail");
+    if (loginEmail) {
+      setEmail(loginEmail);
     }
   }, []);
 
   const handleEmailChange = (value) => {
     setEmail(value);
-    localStorage.setItem("registeredEmail", value);
+    localStorage.setItem("loginEmail", value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -10,15 +10,17 @@ function Booking() {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/yourbookings/");
+        const Email = localStorage.getItem("loggedInEmail");
+        const response = await axios.get(`http://localhost:8000/yourbookings/?email=${Email}`);
         setBookings(response.data);
       } catch (error) {
         console.error("There was an error fetching the bookings:", error);
       }
     };
-
+  
     fetchBookings();
   }, []);
+  
 
   const handleDelete = async (bookingId) => {
     const confirmDelete = window.confirm("Are you sure you want to delete your booking? This action cannot be undone.");
@@ -46,12 +48,14 @@ function Booking() {
             });
 
             const { orderId, amount } = response.data;
-
+            const email = localStorage.getItem("loggedInEmail");
+            const username = localStorage.getItem("loggedInUsername");
+            const contactNumber = localStorage.getItem("loggedInContactNumber");
             const options = {
                 key: "rzp_test_FQzlH7whPNyTpw", // Your Razorpay key
                 amount: amount,
                 currency: "INR",
-                name: "GoTrek",
+                name: username,
                 description: `Payment for ${booking.trek} in ${booking.state}`,
                 order_id: orderId,
                 handler: function (response) {
@@ -59,12 +63,12 @@ function Booking() {
                     setPaidBookings(prev => new Set(prev).add(booking.id));
                 },
                 prefill: {
-                  name:  "Urval shah",
-                  email: "urvalshah1234@gmail.com",
-                  contact: "7043643600",
+                  // name: username, 
+                  email: email, 
+                  contact: contactNumber,
                 },
                 notes: {
-                    address: "Customer Address",
+                    address: "Customer address",
                 },
                 theme: {
                     color: "#F37254",

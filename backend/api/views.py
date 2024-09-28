@@ -129,7 +129,12 @@ def create_booking(request):
 
 @api_view(['GET'])
 def list_bookings(request):
-    bookings = Booking.objects.all().values('id', 'state','email', 'trek', 'price', 'trek_date', 'payment_method')
+    email = request.query_params.get('email')  # Get the email from query parameters
+    if email:
+        bookings = Booking.objects.filter(email=email).values('id', 'state', 'email', 'trek', 'price', 'trek_date', 'payment_method')
+    else:
+        bookings = Booking.objects.none()  # Return empty if no email is provided
+    
     return Response(bookings, status=status.HTTP_200_OK)
 
 # Delete Booking View
